@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="stylesheet.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js" integrity="sha512-SGWgwwRA8xZgEoKiex3UubkSkV1zSE1BS6O4pXcaxcNtUlQsOmOmhVnDwIvqGRfEmuz83tIGL13cXMZn6upPyg==" crossorigin="anonymous" referrerpolicy="no-referrer">
+	</script>
+	<title>QuickML</title>
+</head>
+<body>
+	<div class="header">
+		<h1>QuickML</h1>
+	</div> 
+
+<!--============================ LEFT CONTAINER ============================ -->
+
+
+	<div class="leftcontainer">
+		<div class = "leftpaneheader">
+			<h2>Select Algorithm</h2>
+		</div>
+			<div class = "leftpaneML">
+				<h3>Machine Learning Algorithms</h3>
+  					<button type="button" class="collapsible">Select Algorithm</button>
+  					<div class="content">
+  						<button type="button" class="collapsible">Regression Algorithms</button>
+  						<div class="content">
+  							<ul>
+  								<li><button onclick="showDiv()" class="choice" value="ML-REG-SLR">Simple Linear Regression</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-REG-MLR">Multiple Linear Regression</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-REG-PLR">Polynomial Linear Regression</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-REG-SVfR">Support Vector for Regression</button><li>
+  							</ul>
+  						</div>
+ 						<br><br>
+ 						<button type="button" class="collapsible">Classification Algorithms</button>  								
+ 						<div class="content">
+  							<ul>
+  								<li><button onclick="showDiv()" class="choice" value="ML-CL-KNN">K-Nearest Neighbors</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-CL-SVM">Support Vector Machine</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-CL-KSVM">Kernel Support Vector Machine</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-CL-NB">Naive Bayes</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-CL-DTC">Decision Tree Classification</button></li>
+  								<li><button onclick="showDiv()" class="choice" value="ML-CL-RFC">Random Forest Classification</button></li>
+  							</ul>
+ 						</div>	
+  					</div>
+			</div>
+		<div class = "leftpaneDL">
+			<h3>Deep Learning Algorithms</h3>
+			<button type="button" class="collapsible">Select Algorithms</button>  								
+ 				<div class="content">
+  					<ul>
+  						<li><button onclick="showDiv()" class="choice" value="ANN">ANN</button></li>
+  						<li><button onclick="showDiv()" class="choice" value="CNN">CNN</button></li>
+  						<li><button onclick="showDiv()" class="choice" value="RNN">RNN</button></li>
+  						<li><button onclick="showDiv()" class="choice" value="SOM">SOM</button></li>
+  						<li><button onclick="showDiv()" class="choice" value="RBM">RBM</button></li>
+  						<li><button onclick="showDiv()" class="choice" value="AE">AE</button></li>
+  						<li><button onclick="showDiv()" class="choice" value="DL-REG">Regression</button></li>
+  					</ul>
+ 				</div>	
+		</div> 
+	</div>
+
+
+
+ <!--============================ RIGHT CONTAINER ============================ -->
+
+	<div class ="rightcontainer">
+		<div class = "rightpane" style="display:none" id="test">
+			<h3> Input Data </h3>
+			<form class="form-inline">
+				<div class="form-group">
+					<label for="files">Upload a CSV formatted file:</label>
+					<input id="files" class="form-control" accept=".csv" required="" type="file">
+				</div>
+				<div class="form-group">
+					<button id="submit-file" class="btn btn-primary" type="submit">Upload File</button>
+				</div>
+			</form>
+		</div>
+		<div class = "rightpane"; style="display:none"><h3> Check Dependent Variables </h3></div>
+		<div class = "rightpane"; style="display:none"><h3> Parameters </h3></div>
+	</div>
+	<script src="script.js">
+	</script>
+</body>
+</html>
