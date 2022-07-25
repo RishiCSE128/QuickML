@@ -53,7 +53,7 @@ def dataPreProcess(dataSet, varMap):
     
        
 def main():
-    response = dataPreProcess('50_Startups.csv', var_map)
+    response = dataPreProcess("50_Startups.csv", var_map)
     print(response['X_test'])
 
 main()
