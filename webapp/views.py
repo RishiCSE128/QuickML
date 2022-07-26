@@ -5,7 +5,7 @@ from sourceCode import Data_Pre_Processing
 views = Blueprint('home', __name__)
 
 @views.route('/')
-def home():
+def home(): 
     return render_template('base.html')
 
 @views.route('/', methods=['POST'])
