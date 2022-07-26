@@ -53,7 +53,8 @@ def dataPreProcess(dataSet, varMap):
     
        
 def main():
-    response = dataPreProcess("50_Startups.csv", var_map)
+    file = '~/Documents/git/QuickML/50_Startups.csv'
+    response = dataPreProcess(file, var_map)
     print(response['X_test'])
 
 main()
