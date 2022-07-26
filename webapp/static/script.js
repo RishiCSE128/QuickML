@@ -14,9 +14,8 @@ for (i = 0; i < coll.length; i++) {
 }
 
 function showDiv() {
-  document.getElementById('appear').style.display = "block";
+  document.getElementById('appear1').style.display = "block";
 }
-
 
 document.querySelectorAll('.choice').forEach(item => {
   item.addEventListener("click", event => {
