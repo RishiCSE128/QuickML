@@ -7,7 +7,7 @@ h1 {
 	color: white;
 	padding-left: 15px;
 }
-h3, h2 {
+h3, h2, p {
 	color: white;
 	padding-left: 10px;
 }
@@ -20,7 +20,7 @@ ul {
 }
 table, td, th{
 	width:100%; 
-	border:2px solid;
+	border:2px solid black;
 }
 .header {
 	width: 99.4%;
@@ -67,7 +67,7 @@ table, td, th{
 	width: 98.7%;
 	height: 30%;
 	float:  left;
-	background-color: darkturquoise;
+	background-color: #db7916;
 	border-collapse: collapse;
 	border-style: solid;
 }

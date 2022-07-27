@@ -13,7 +13,7 @@
 
 <!--============================ LEFT CONTAINER ============================ -->
 
-
+{% block leftcontent %}
 	<div class="leftcontainer">
 		<div class = "leftpaneheader">
 			<h2>Select Algorithm</h2>
@@ -61,11 +61,11 @@
  				</div>	
 		</div> 
 	</div>
-
+{% endblock %}
 
 
  <!--============================ RIGHT CONTAINER ============================ -->
- {% block content %}
+ {% block rightcontent %}
 
 	<div class ="rightcontainer">		
 		<div class = "rightpane" style="display:none" id="appear1">

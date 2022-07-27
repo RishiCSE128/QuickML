@@ -2,7 +2,7 @@
 {% block title %} Input Data {% endblock %}
 
 
-{% block content %}
+{% block rightcontent %}
 
 <div class="rightcontainer">
     <div class="rightpane" style="display:none" id="appear1">
@@ -15,6 +15,13 @@
 
     <div class='rightpane' , style="height:45.65%">
         <h3>Specify Data Attributes</h3>
+        <p>
+            Below are the attributes of your data. Please select which attributes
+            are independent, dependent and categorical. Independent data is not changed by other 
+            data. The value of the dependent data is determined by that of the independent. Categorical
+            data are not numerical, they represent categories. 
+        </p>
+
         <table>
             <tr>
                 <th></th>
@@ -24,12 +31,12 @@
             </tr>
         
             {% for i in attributes: %}
-            <tr>
-                <td>{{i}}</td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-                <td><input type="checkbox"></td>
-            </tr>
+                <tr>
+                    <td>{{i}}</td>
+                    <td><input type="radio"  name = 'test_{{attributes.index(i)}}' value = "Independent"></td>
+                    <td><input type="radio"  name = 'test_{{attributes.index(i)}}' value = "Dependent"></td>
+                    <td><input type="checkbox"></td>
+                </tr>
             {% endfor %}
 
         </table>
@@ -40,3 +47,5 @@
 </div>
 
 {% endblock %}
+
+{% block leftcontent%} {% endblock %}
