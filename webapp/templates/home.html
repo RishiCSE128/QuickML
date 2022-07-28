@@ -22,7 +22,7 @@
             data are not numerical, they represent categories. 
         </p>
 
-        <table>
+        <table id="data">
             <tr>
                 <th></th>
                 <th>Independent</th>
@@ -32,16 +32,17 @@
         
             {% for i in attributes: %}
                 <tr>
-                    <td>{{i}}</td>
-                    <td><input type="radio"  name = 'test_{{attributes.index(i)}}' value = "Independent"></td>
-                    <td><input type="radio"  name = 'test_{{attributes.index(i)}}' value = "Dependent"></td>
-                    <td><input type="checkbox"></td>
+                    <th class="dynamic">{{i}}</th>
+                    <td><input class ='rd' type="radio" name = 'test_{{attributes.index(i)}}' value = "Independent"></td>
+                    <td><input class ='rd' type="radio" name = 'test_{{attributes.index(i)}}' value = "Dependent"></td>
+                    <td><input class ='rd' type="radio" value="Categorical"></td>
                 </tr>
             {% endfor %}
 
         </table>
+        <button clas="btn" onclick="makeVarMap1()">Submit</button>
     </div>
-    <div class='rightpane' , style="height:45%">
+    <div class='rightpane' , style="height:45%; background-color:#015e0c">
         <h3>Parameters</h3>
     </div>
 </div>

@@ -3,6 +3,8 @@ body, html{
 	height:  100%;
 	margin:  0;
 }
+
+
 h1 {
 	color: white;
 	padding-left: 15px;
@@ -83,6 +85,9 @@ table, td, th{
   margin-left:  255px;
   cursor: pointer;
 }
+
+
+
 .collapsible {
   background-color: #eee;
   color: #444;
@@ -102,7 +107,11 @@ table, td, th{
   padding-top: 5px;
   margin-left: 75px;
   display: none;
-  background-color: darkcyan;
+  background-color: #3289a8;
+}
+
+.rd{
+	margin-left: 40px;
 }
 
 .choice {
@@ -111,6 +120,4 @@ table, td, th{
 #appear1 {
 
 }
-#appear2 {
 
-}

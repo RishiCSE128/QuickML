@@ -1,74 +1,184 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="{{ url_for('static', filename='stylesheet.css') }}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+		integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	<title>{% block title %}QuickML{% endblock %}</title>
 </head>
+
 <body>
-	<div class="header">
-		<h1>QuickML</h1>
-	</div> 
+	<div clas="container">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">QuickML</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+		</nav>
 
-<!--============================ LEFT CONTAINER ============================ -->
+		<!--============================ LEFT CONTAINER ============================ -->
 
-{% block leftcontent %}
-	<div class="leftcontainer">
-		<div class = "leftpaneheader">
-			<h2>Select Algorithm</h2>
+		{% block leftcontent %}
+
+
+
+
+		<div class="container-fluid">
+			<h1 class="display-4">Select Algorithm</h1>
 		</div>
-			<div class = "leftpaneML">
-				<h3>Machine Learning Algorithms</h3>
-  					<button type="button" class="collapsible">Select Algorithm</button>
-  					<div class="content">
-  						<button type="button" class="collapsible">Regression Algorithms</button>
-  						<div class="content">
-  							<ul>
-  								<li><button onclick="showDiv()" class="choice" value="ML-REG-SLR">Simple Linear Regression</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-REG-MLR">Multiple Linear Regression</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-REG-PLR">Polynomial Linear Regression</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-REG-SVfR">Support Vector for Regression</button><li>
-  							</ul>
-  						</div>
- 						<br><br>
- 						<button type="button" class="collapsible">Classification Algorithms</button>  								
- 						<div class="content">
-  							<ul>
-  								<li><button onclick="showDiv()" class="choice" value="ML-CL-KNN">K-Nearest Neighbors</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-CL-SVM">Support Vector Machine</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-CL-KSVM">Kernel Support Vector Machine</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-CL-NB">Naive Bayes</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-CL-DTC">Decision Tree Classification</button></li>
-  								<li><button onclick="showDiv()" class="choice" value="ML-CL-RFC">Random Forest Classification</button></li>
-  							</ul>
- 						</div>	
-  					</div>
+
+
+
+		<button class="btn btn-primary" data-toggle="collapse" href=".learning" aria-expanded="false"
+			style="margin:20px 0px 0px 30px">
+			Machine Learning
+		</button>
+		<!-- ML SUP LEARNING -->
+		<div class="learning collapse hide">
+			<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1" aria-expanded="false"
+				aria-controls="collapseOne" style="margin:30px 0px 5px 45px">
+				Supervised Learning
+			</button>
+		</div>
+
+		<!-- REGRESSION  -->
+		<div class="card-header1 collapse hide" id="headingOne">
+			<h5 class="mb-0">
+				<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseOne"
+					aria-expanded="false" aria-controls="collapseOne" style="margin:20px 3px 3px 70px">
+					Regression Algorithms
+				</button>
+			</h5>
+		</div>
+
+		<div id="collapseOne" class="collapse hide" data-parent="#accordion">
+			<div class="card card-body">
+				<ul style="margin-left:40px">
+					<li><button onclick="showDiv()" class="btn" value="ML-REG-SLR">Simple Linear
+							Regression</button></li>
+					<li><button onclick="showDiv()" class="btn" value="ML-REG-MLR">Multiple
+							Linear
+							Regression</button></li>
+					<li><button onclick="showDiv()" class="btn" value="ML-REG-PLR">Polynomial
+							Linear
+							Regression</button></li>
+					<li><button onclick="showDiv()" class="btn" value="ML-REG-SVfR">Support
+							Vector for
+							Regression</button>
+					<li>
+				</ul>
 			</div>
-		<div class = "leftpaneDL">
-			<h3>Deep Learning Algorithms</h3>
-			<button type="button" class="collapsible">Select Algorithms</button>  								
- 				<div class="content">
-  					<ul>
-  						<li><button onclick="showDiv()" class="choice" value="ANN">ANN</button></li>
-  						<li><button onclick="showDiv()" class="choice" value="CNN">CNN</button></li>
-  						<li><button onclick="showDiv()" class="choice" value="RNN">RNN</button></li>
-  						<li><button onclick="showDiv()" class="choice" value="SOM">SOM</button></li>
-  						<li><button onclick="showDiv()" class="choice" value="RBM">RBM</button></li>
-  						<li><button onclick="showDiv()" class="choice" value="AE">AE</button></li>
-  						<li><button onclick="showDiv()" class="choice" value="DL-REG">Regression</button></li>
-  					</ul>
- 				</div>	
-		</div> 
+		</div>
+		<!-- CLASSIFICATION -->
+		<div class="card-header1 collapse hide" id="headingTwo">
+			<h5 class="mb-0">
+				<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo"
+					aria-expanded="false" aria-controls="collapseTwo" style="margin:7px 3px 20px 70px">
+					Classification Algorithms
+				</button>
+			</h5>
+		</div>
+		<div id="collapseTwo" class="collapse" data-parent="#accordion">
+			<div class="card-body">
+				<ul style="margin-left:40px">
+					<li><button onclick="showDiv()" class="btn" value="ML-CL-KNN">K-Nearest
+							Neighbors</button></li>
+					<li><button onclick="showDiv()" class="btn" value="ML-CL-SVM">Support Vector
+							Machine</button></li>
+					<li><button onclick="showDiv()" class="btn" value="ML-CL-KSVM">Kernel
+							Support
+							Vector
+							Machine</button></li>
+					<li><button onclick="showDiv()" class="btn" value="ML-CL-NB">Naive
+							Bayes</button>
+					</li>
+					<li><button onclick="showDiv()" class="btn" value="ML-CL-DTC">Decision Tree
+							Classification</button></li>
+					<li><button onclick="showDiv()" class="btn" value="ML-CL-RFC">Random Forest
+							Classification</button></li>
+				</ul>
+			</div>
+		</div>
+		<!-- UNSUPERVISED LEARNING -->
+		<div class="learning collapse hide">
+			<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header2" aria-expanded="false"
+				aria-controls="collapseOne" style="margin:10px 0px 5px 45px">
+				Unsupervised Learning
+			</button>
+		</div>
+		<div class="card-header2 collapse hide" id="headingTwo">
+			<h5 class="mb-0">
+				<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo"
+					aria-expanded="false" aria-controls="collapseTwo" style="margin:20px 3px 3px 70px">
+					Clustering Algorithms
+				</button>
+			</h5>
+		</div>
+
+
+
+
+		<!-- <h3>Deep Learning Algorithms</h3> -->
+		<div class="container-fluid">
+			<div id="accordion" style='width:33%'>
+
+				<div class="card-headerDL" id="headingThree">
+					<h5 class="mb-0">
+						<button class="btn btn-primary" data-toggle="collapse" href=".learning1" aria-expanded="false"
+							aria-controls="collapseOne" style="margin:20px 0px 0px 15px">
+							Deep Learning Algorithms
+						</button>
+					</h5>
+				</div>
+
+				<div class="learning1 collapse hide">
+					<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1"
+						aria-expanded="false" aria-controls="collapseOne" style="margin:30px 0px 5px 25px">
+						Supervised Learning
+					</button>
+				</div>
+
+				<div id="collapseThree" class="collapse hide" data-parent="#accordion">
+					<div class="card-body">
+						<ul>
+							<li><button onclick="showDiv()" class="btn" value="ANN">ANN</button></li>
+							<li><button onclick="showDiv()" class="btn" value="CNN">CNN</button></li>
+							<li><button onclick="showDiv()" class="btn" value="RNN">RNN</button></li>
+							<li><button onclick="showDiv()" class="btn" value="SOM">SOM</button></li>
+							<li><button onclick="showDiv()" class="btn" value="RBM">RBM</button></li>
+							<li><button onclick="showDiv()" class="btn" value="AE">AE</button></li>
+							<li><button onclick="showDiv()" class="btn" value="DL-REG">Regression</button>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="learning1 collapse hide">
+					<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1"
+						aria-expanded="false" aria-controls="collapseOne" style="margin:10px 0px 5px 25px">
+						Unsupervised Learning
+					</button>
+				</div>
+
+			</div>
+		</div>
 	</div>
-{% endblock %}
+	</div>
 
 
- <!--============================ RIGHT CONTAINER ============================ -->
- {% block rightcontent %}
 
-	<div class ="rightcontainer">		
-		<div class = "rightpane" style="display:none" id="appear1">
+	{% endblock %}
+
+
+	<!--============================ RIGHT CONTAINER ============================ -->
+	{% block rightcontent %}
+
+	<div class="container-fluid" width="50%">
+		<div class="rightpane" style="display:none" id="appear1">
 			<h3> Input Data </h3>
 
 			<!-- File upload -->
@@ -80,9 +190,17 @@
 	</div>
 
 	{% endblock %}
-	<script
-		type="text/javascript"
-		src="{{ url_for('static', filename='script.js') }}"
-	></script>	
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+		crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+		crossorigin="anonymous"></script>
+	<script type="text/javascript" src="{{ url_for('static', filename='script.js') }}"></script>
+	</div>
 </body>
+
 </html>
