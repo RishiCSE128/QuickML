@@ -24,13 +24,30 @@ document.querySelectorAll('.choice').forEach(item => {
   })
 })
 
+function isChecked(x) {
+  const radioButtons = document.querySelectorAll('.rd');
+  for (const radioButton of radioButtons) {
+    if (x.checked) {
+      console.log(x.value)
+    }
+    else {
+      console.log(x.value)
+    }
+  }
+}
+
 function makeVarMap1() {
-  var tbl = $('table#data tr').map(function() {
-    return $(this).find('td').map(function() {
-      return $(this).text();
-    }).get();
-  }).get();
-  console.log(tbl)
+  const radioButtons = document.querySelectorAll('.rd');
+  for (const x of radioButtons) {
+    if (x.checked) {
+      console.log(x.value)
+      console.log('True')
+    }
+    else {
+      console.log(x.value)
+      console.log('False')
+    }
+  }
 }
 
 
@@ -39,9 +56,3 @@ function makeVarMap1() {
 
 
 
-// function makeVarMap() {
-//   [...document.getElementsByClassName(".dynamic")].forEach(item => {
-//     var key = $("input[type='radio']:checked").val();
-//     console.log(key)
-//   })
-// }
