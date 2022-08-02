@@ -1,3 +1,4 @@
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 
@@ -39,7 +40,8 @@ function isChecked(x) {
 }
 
 
-function makeVarMap1() {
+function makeVarMap() {
+
   const radioButtons = document.querySelectorAll('.rd');  // All radio buttons
   const headers = document.querySelectorAll('th.rt');     // Headers
 
@@ -63,11 +65,19 @@ function makeVarMap1() {
       varMap['Dependent'].push(head[j]);
       j++;
     }
-    if(radioButtons[x].checked && radioButtons[x].value == 'Cat') {
+    if (radioButtons[x].checked && radioButtons[x].value == 'Cat') {
       j--;
       varMap['Categorical'].push(head[j]);
       j++;
     }
   }
+  //const data = JSON.stringify(varMap);
+
+  const FileSystem = require("fs");
+  FileSystem.writeFile('temp.json', JSON.stringify(varMap), (error) => {
+    if (error) throw error;
+  });
+
+
   console.log(varMap);
 }

@@ -40,7 +40,9 @@
             {% endfor %}
 
         </table>
-        <button clas="btn" onclick="makeVarMap1()">Submit</button>
+        <form method="POST" action='/dataPreProcess'>
+            <button clas="btn" onclick="makeVarMap()">Submit</button>
+        </form>
     </div>
     <div class='rightpane' , style="height:45%; background-color:#015e0c">
         <h3>Parameters</h3>
