@@ -17,6 +17,3 @@ def upload_file():
 
 
     return render_template('home.html', attributes = list(dataSet.columns))
-    # if uploaded_file.filename != '':
-    #     uploaded_file.save(uploaded_file.filename)
-    # 

@@ -17,9 +17,9 @@
         <h3>Specify Data Attributes</h3>
         <p>
             Below are the attributes of your data. Please select which attributes
-            are independent, dependent and categorical. Independent data is not changed by other 
+            are independent, dependent and categorical. Independent data is not changed by other
             data. The value of the dependent data is determined by that of the independent. Categorical
-            data are not numerical, they represent categories. 
+            data are not numerical, they represent categories.
         </p>
 
         <table id="data">
@@ -29,14 +29,14 @@
                 <th>Dependent</th>
                 <th>Categorical</th>
             </tr>
-        
+
             {% for i in attributes: %}
-                <tr>
-                    <th class="dynamic">{{i}}</th>
-                    <td><input class ='rd' type="radio" name = 'test_{{attributes.index(i)}}' value = "Independent"></td>
-                    <td><input class ='rd' type="radio" name = 'test_{{attributes.index(i)}}' value = "Dependent"></td>
-                    <td><input class ='rd' type="radio" value="Categorical"></td>
-                </tr>
+            <tr>
+                <th class="rt" value='{{i}}'>{{i}}</th>
+                <td><input class='rd' type="radio" name='test_{{attributes.index(i)}}' value="Ind"></td>
+                <td><input class='rd' type="radio" name='test_{{attributes.index(i)}}' value="Dep"></td>
+                <td><input class='rd' type="radio" value="Cat"></td>
+            </tr>
             {% endfor %}
 
         </table>
@@ -46,7 +46,6 @@
         <h3>Parameters</h3>
     </div>
 </div>
-
 {% endblock %}
 
 {% block leftcontent%} {% endblock %}

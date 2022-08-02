@@ -26,8 +26,10 @@ document.querySelectorAll('.choice').forEach(item => {
 
 function isChecked(x) {
   const radioButtons = document.querySelectorAll('.rd');
+
   for (const radioButton of radioButtons) {
     if (x.checked) {
+
       console.log(x.value)
     }
     else {
@@ -35,24 +37,37 @@ function isChecked(x) {
     }
   }
 }
+
 
 function makeVarMap1() {
-  const radioButtons = document.querySelectorAll('.rd');
-  for (const x of radioButtons) {
-    if (x.checked) {
-      console.log(x.value)
-      console.log('True')
+  const radioButtons = document.querySelectorAll('.rd');  // All radio buttons
+  const headers = document.querySelectorAll('th.rt');     // Headers
+
+  var varMap = {
+    'Independent': [],
+    'Dependent': [],
+    'Categorical': []
+  }
+
+  var head = [];
+  for (let i = 0; i < headers.length; ++i) {
+    head[i] = headers[i].textContent;
+  }
+  var j = 0;
+  for (let x = 0; x < radioButtons.length; x++) {
+    if (radioButtons[x].checked && radioButtons[x].value == 'Ind') {
+      varMap['Independent'].push(head[j]);
+      j++;
     }
-    else {
-      console.log(x.value)
-      console.log('False')
+    if (radioButtons[x].checked && radioButtons[x].value == 'Dep') {
+      varMap['Dependent'].push(head[j]);
+      j++;
+    }
+    if(radioButtons[x].checked && radioButtons[x].value == 'Cat') {
+      j--;
+      varMap['Categorical'].push(head[j]);
+      j++;
     }
   }
+  console.log(varMap);
 }
-
-
-
-//document.getElementById("someId").getElementsByClassName("someClass")[0].getElementsByTagName("div")[0]
-
-
-
