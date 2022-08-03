@@ -73,11 +73,12 @@ function makeVarMap() {
   }
   //const data = JSON.stringify(varMap);
 
-  const FileSystem = require("fs");
-  FileSystem.writeFile('temp.json', JSON.stringify(varMap), (error) => {
-    if (error) throw error;
-  });
-
-
   console.log(varMap);
 }
+$(document).ready(function () {
+  $('input.dep:radio').change(function() {
+      // When any radio button on the page is selected,
+      // then deselect all other radio buttons.
+      $('input.dep:radio:checked').not(this).prop('checked', false);
+  });
+})

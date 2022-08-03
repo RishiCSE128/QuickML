@@ -29,20 +29,20 @@
                 <th>Dependent</th>
                 <th>Categorical</th>
             </tr>
-
-            {% for i in attributes: %}
-            <tr>
-                <th class="rt" value='{{i}}'>{{i}}</th>
-                <td><input class='rd' type="radio" name='test_{{attributes.index(i)}}' value="Ind"></td>
-                <td><input class='rd' type="radio" name='test_{{attributes.index(i)}}' value="Dep"></td>
-                <td><input class='rd' type="radio" value="Cat"></td>
-            </tr>
-            {% endfor %}
-
+            <div>
+                {% for i in attributes: %}
+                <tr>
+                    <th class="rt" value='{{i}}'>{{i}}</th>
+                    <td><input class='rd' type="radio" name='test_{{attributes.index(i)}}' value="Ind"></td>
+                    <td><input class='rd dep' type="radio" name='test_{{attributes.index(i)}}'value="Dep"></td>
+                    <td><input class='rd' type="checkbox" value="Cat"></td>
+                </tr>
+                {% endfor %}
+            </div>
         </table>
-        <form method="POST" action='/dataPreProcess'>
-            <button clas="btn" onclick="makeVarMap()">Submit</button>
-        </form>
+
+        <button clas="btn" onclick="makeVarMap()">Submit</button>
+
     </div>
     <div class='rightpane' , style="height:45%; background-color:#015e0c">
         <h3>Parameters</h3>

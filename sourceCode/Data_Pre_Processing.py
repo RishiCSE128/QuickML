@@ -34,6 +34,7 @@ def dataPreProcess(dataSet, varMap):
                          (OneHotEncoder(), 
                          varMap['categorical']))
     Xtemp2 = col_tans.fit_transform(X[varMap['categorical']])
+    
     # Splitting Into Train and Test Set 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3 , random_state = 0)
 
