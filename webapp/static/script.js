@@ -71,7 +71,21 @@ function makeVarMap() {
       j++;
     }
   }
-  console.log(varMap);
+  s = JSON.stringify(varMap)
+
+  $.ajax({
+    url: '/dataPreProcessing',
+    type: "POST",
+    contentType: "application/json", 
+    data: JSON.stringify(s)
+  }).done(function(result){     // on success get the return object from server
+    console.log(result)     // do whatever with it. In this case see it in console
+})
+ 
+  //document.getElementById('confirmation').innerHTML = data;
+
+  // console.log(JSON.stringify(s));
+  // console.log(s)
 }
 
 $(document).ready(function () {
