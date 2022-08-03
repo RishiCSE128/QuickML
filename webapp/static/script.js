@@ -71,10 +71,9 @@ function makeVarMap() {
       j++;
     }
   }
-  //const data = JSON.stringify(varMap);
-
   console.log(varMap);
 }
+
 $(document).ready(function () {
   $('input.dep:radio').change(function() {
       // When any radio button on the page is selected,
