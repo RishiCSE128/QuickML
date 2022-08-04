@@ -76,22 +76,18 @@ function makeVarMap() {
   $.ajax({
     url: '/dataPreProcessing',
     type: "POST",
-    contentType: "application/json", 
+    contentType: "application/json",
     data: JSON.stringify(s)
-  }).done(function(result){     // on success get the return object from server
-    console.log(result)     // do whatever with it. In this case see it in console
-})
- 
-  //document.getElementById('confirmation').innerHTML = data;
+  }).done(function (result) {     // on success get the return object from server
+    console.log(result)          // do whatever with it. In this case see it in console
+  })
 
-  // console.log(JSON.stringify(s));
-  // console.log(s)
 }
 
 $(document).ready(function () {
-  $('input.dep:radio').change(function() {
-      // When any radio button on the page is selected,
-      // then deselect all other radio buttons.
-      $('input.dep:radio:checked').not(this).prop('checked', false);
+  $('input.dep:radio').change(function () {
+    // When any radio button on the page is selected,
+    // then deselect all other radio buttons.
+    $('input.dep:radio:checked').not(this).prop('checked', false);
   });
 })

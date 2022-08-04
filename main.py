@@ -8,11 +8,7 @@ app = create_app()
 
 if __name__ == '__main__':
     # Turn off when running in production
-    app.run(debug=True, port = 5001)
+    app.run(debug=True, port = 5005)
 
-# @app.route('/preProcess', methods=['POST'])
-# def dataPre():
-#     result =  request.get_json()
-    
-#     return render_template('DPP.html', varMap = json.loads(result))
+
 
