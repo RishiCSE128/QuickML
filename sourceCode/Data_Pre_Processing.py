@@ -1,8 +1,10 @@
+import os
 import pandas as pd
 import json as j
 import numpy as np
 import sklearn as sk
 from csv import reader
+from sklearn import datasets
 from sklearn.impute import SimpleImputer
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 from sklearn.compose import make_column_transformer 
@@ -11,7 +13,9 @@ from sklearn.preprocessing import StandardScaler
 
 
 def dataPreProcess(dataSet, varMap):
-    data = pd.DataFrame(dataSet)
+    print(dataSet)
+    data = pd.read_csv(dataSet.split('/')[-1])
+
 
     # Splitting Dependent & Independent Variables
     X = data[varMap['Independent']]  # DataFrames
@@ -39,20 +43,13 @@ def dataPreProcess(dataSet, varMap):
     X_test.iloc[: , :] = scale_X.fit_transform(X_test.iloc[: , :])
 
     # Returns a dictionary of preprocessed data
-    return(
-        {
-            'X_train': X_train,
-            'X_test': X_test,
-            'y_train': y_train,
-            'y_test': y_test
-        }
-    )
-    
-       
-# def main():
-#     file = '~/Documents/git/QuickML/50_Startups.csv'
-#     response = dataPreProcess(file, var_map)
-#     print(response['X_test'])
+    ret = {
+            'X_train': X_train.values.tolist(),
+            'X_test': X_test.values.tolist(),
+            'y_train': y_train.values.tolist(),
+            'y_test': y_test.values.tolist()
+    }
 
-# main()
+    return(ret)
+    
 

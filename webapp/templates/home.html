@@ -13,7 +13,7 @@
         </form>
     </div>
 
-    <div class='rightpane' , style="height:45.65%">
+    <div class='rightpane', style="height:45.65%", id="preProcessedData">
         <h3>Specify Data Attributes</h3>
         <p>
             Below are the attributes of your data. Please select which attributes
@@ -26,7 +26,7 @@
             <tr>
                 <th></th>
                 <th>Independent</th>
-                <th>Dependent</th>  
+                <th>Dependent</th>
                 <th>Categorical</th>
             </tr>
             <div>
@@ -41,22 +41,17 @@
             </div>
         </table>
 
-        <button clas="btn" onclick="makeVarMap()">Submit</button>
+        <button class="btn" onclick="makeVarMap()">Submit</button>
 
     </div>
-
-    <!-- <div id='summary' class='rightpane' , style="height:75%; background-color:#f1e23a"></div>
-
-    <form method="POST" action="/dataPreProcessing">
-        <input id='a' type="text" name="dataPreP">
-        <div id="confirmation">
-        </div>
-        <input type="submit">
-
-    </form> -->
-
+    <button id = "dis" style="display: none">Submit</button>
 </div>
 {% endblock %}
 
 {% block leftcontent%}
+
+    <div id = 'output'>
+
+    </div>
+
 {% endblock %}

@@ -49,7 +49,7 @@ table, td, th{
 	border-collapse:  seperate;
 	border-style: solid;
 }
-.leftpaneML{
+/* .leftpaneML{
 	width:  99.4%;
 	height: 52.3%;
 	float:  left;
@@ -64,7 +64,7 @@ table, td, th{
 	background-color: darkcyan;
 	border-collapse: seperate;
 	border-style: solid;
-}
+} */
 .rightpane{
 	width: 98.7%;
 	height: 30%;

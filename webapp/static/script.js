@@ -78,10 +78,13 @@ function makeVarMap() {
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(s)
-  }).done(function (result) {     // on success get the return object from server
-    console.log(result)          // do whatever with it. In this case see it in console
-  })
+  }).done(function (result) {
+    $('#output').replaceWith(result)
+    document.getElementById('preProcessedData').style.display = "none";
+    document.getElementById('dis').style.display = "block";
+  })  
 
+  
 }
 
 $(document).ready(function () {
