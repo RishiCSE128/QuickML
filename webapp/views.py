@@ -38,28 +38,32 @@ def dataPre():
     file = os.path.join(UPLOAD_FOLDER, filename)
 
     table = DPP.dataPreProcess(file, varMap)
-
+    
+    dF = pd.read_csv(file.split('/')[-1])
+    col = dF.columns
+    print(col)
     return (f'''
             <h2 style="text-align:center">Scroll to Preview your Pre-Processed Data!</h2>
             <hr>
             <div>
-                <h3 style="text-align:center"> X train </h3> <hr><br>
-                <div class="container" style="display:flex">
-                    {tabulate(table['X_train'], tablefmt='html')}
+                <h3 style="text-align:left"> X train </h3> 
+                <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
+                <div class="container" style="display:flex; width=70%">
+                    {tabulate(table['X_train'], tablefmt='html', headers = col)}
+                    {tabulate(table['y_train'], tablefmt='html', headers = col[4:])}
                 </div>
-                <h3 style="text-align:center"> X test </h3> <hr><br>
-                <div class="container" style="display:flex">
-                    {tabulate(table['X_test'], tablefmt='html')}
-                </div>
-                <h3 style="text-align:center"> y train </h3> <hr><br>
-                <div class="container" style="display:flex">
-                    {tabulate(table['y_train'], tablefmt='html')}
-                </div>
-                <h3 style="text-align:center"> Y test </h3> <hr><br>
-                <div class="container" style="display:flex">
-                    {tabulate(table['y_test'], tablefmt='html')}
+                <hr>
+                <h3 style="text-align:left"> X test </h3> 
+                <h3 style="text-align:right; margin-top:-40px"> Y test </h3> <hr><br>
+                <div class="container" style="display:flex; width=70%">
+                    {tabulate(table['X_test'], tablefmt='html', headers = col)}
+                    {tabulate(table['y_test'], tablefmt='html', headers = col[4:])}
                 </div>
             </div>
     ''' )
     # buliding APIs, data analytics, proficiency in python 
     # python, docker, smart contracts (soliidty)
+
+@views.route('/Results', methods=["POST"])
+def confusionMatrix():
+    return render_template("results.html")

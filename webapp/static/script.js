@@ -79,12 +79,20 @@ function makeVarMap() {
     contentType: "application/json",
     data: JSON.stringify(s)
   }).done(function (result) {
-    $('#output').replaceWith(result)
-    document.getElementById('preProcessedData').style.display = "none";
-    document.getElementById('dis').style.display = "block";
-  })  
+    var div = document.createElement("div");
 
-  
+    div.style.width = "80%";
+    div.style.height = "90%";
+    div.style.background = "#e66a22";
+    div.style.color = "black";
+    div.innerHTML = result;
+    div.style.margin = "auto";
+
+    document.getElementById("main").appendChild(div);
+    document.getElementById('preProcessedData').style.display = "none";
+    document.getElementById('Xar').style.display = "block";
+    //document.getElementById('dis').style.display = "block";
+  })
 }
 
 $(document).ready(function () {
