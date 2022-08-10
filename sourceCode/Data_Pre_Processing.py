@@ -14,7 +14,7 @@ from sklearn.preprocessing import StandardScaler
 
 def dataPreProcess(dataSet, varMap):
     print(dataSet)
-    data = pd.read_csv(dataSet.split('/')[-1])\
+    data = pd.read_csv(dataSet.split('/')[-1])
 
     varMap['Missing'] = data.columns[data.isnull().any()].tolist()
 

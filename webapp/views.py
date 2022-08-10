@@ -5,6 +5,7 @@ from flask import Blueprint, render_template, request, redirect, url_for
 import pandas as pd
 from sklearn import datasets
 from sourceCode import Data_Pre_Processing as DPP
+from sourceCode import Simple_Linear_Regression as SLR
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -22,14 +23,14 @@ filename = ''
 def base(): 
     return render_template('base.html')
 
-# Invoked when user submits file - 
+# Invoked when user submits file -  
 # creates HTML table with attributes of file
 @views.route('/', methods=['POST'])
 def upload_file():
     
     global filename
     file = request.files['file']
-    
+
     # Saves the file so it can be accessed later on.
     dataSet = pd.read_csv(file)
     file.save(os.path.join(UPLOAD_FOLDER, file.filename))
@@ -48,7 +49,7 @@ def dataPre():
     # pre-processing function
     varMap = json.loads(result)
     file = os.path.join(UPLOAD_FOLDER, filename)
-
+    # print(f"The file location is {file}")
     table = DPP.dataPreProcess(file, varMap)
 
     # Getting the individual components of pre processed data 
@@ -87,16 +88,19 @@ def dataPre():
             <h2 style="text-align:center">Scroll to Preview your Pre-Processed Data!</h2>
             <hr>
             <div>
-                <h3 style="text-align:left"> X train </h3> 
-                <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
-                <div class="container" style="display:flex; width=70%">
+                
+                    <h3 style="text-align:left" class="btn btn-primary" data-toggle="collapse"
+                     href="#trainSet"> X train </h3> 
+                    <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
+                
+                <div id="trainset" class="container" style="display:flex; width=60%">
                     {tabulate(table['X_train'], tablefmt='html', headers = col)}
                     {tabulate(table['y_train'], tablefmt='html', headers = col[4:])}
                 </div>
                 <hr>
                 <h3 style="text-align:left"> X test </h3> 
                 <h3 style="text-align:right; margin-top:-40px"> Y test </h3> <hr><br>
-                <div class="container" style="display:flex; width=70%">
+                <div class="container" style="display:flex; width=60%">
                     {tabulate(table['X_test'], tablefmt='html', headers = col)}
                     {tabulate(table['y_test'], tablefmt='html', headers = col[4:])}
                 </div>
@@ -112,6 +116,11 @@ def confusionMatrix():
     Y_test = pd.read_csv('pre_processed_data/yTest')
     Y_train = pd.read_csv('pre_processed_data/yTrain')
 
+    print(X_train)
+    print(Y_train)
+    print('size of x = {0}'.format(X_train.size))
+    print('size of y = {0}'.format(Y_train.size))
 
+    x = SLR.simpleLinearRegression(X_test.iloc[:, :2], X_train.iloc[:, :2], Y_test, Y_train)
 
     return render_template("results.html")

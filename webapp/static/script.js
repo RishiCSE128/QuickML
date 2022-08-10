@@ -25,6 +25,15 @@ document.querySelectorAll('.choice').forEach(item => {
   })
 })
 
+
+//     var fso = CreateObject("Scripting.FileSystemObject"); 
+//     var s  = fso.CreateTextFile("<your Path>/filename.txt", True);
+
+//     x = item.value;
+//     s.WriteLine(x);
+//     s.Close();
+
+
 function isChecked(x) {
   const radioButtons = document.querySelectorAll('.rd');
 
@@ -91,10 +100,10 @@ function makeVarMap() {
     document.getElementById("main").appendChild(div);
     document.getElementById('preProcessedData').style.display = "none";
     document.getElementById('Xar').style.display = "block";
-    //document.getElementById('dis').style.display = "block";
   })
 }
 
+// Radio button logic done in JQuery
 $(document).ready(function () {
   $('input.dep:radio').change(function () {
     // When any radio button on the page is selected,
