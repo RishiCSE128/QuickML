@@ -14,8 +14,8 @@ from sklearn.preprocessing import StandardScaler
 
 def dataPreProcess(dataSet, varMap):
     print(dataSet)
-    data = pd.read_csv(dataSet.split('/')[-1])
-    columns = data.columns
+    data = pd.read_csv(dataSet.split('/')[-1])\
+
 
     # Splitting Dependent & Independent Variables
     X = data[varMap['Independent']]  # DataFrames
