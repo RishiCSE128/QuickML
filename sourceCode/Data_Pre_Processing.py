@@ -16,15 +16,16 @@ def dataPreProcess(dataSet, varMap):
     print(dataSet)
     data = pd.read_csv(dataSet.split('/')[-1])\
 
+    varMap['Missing'] = data.columns[data.isnull().any()].tolist()
 
     # Splitting Dependent & Independent Variables
     X = data[varMap['Independent']]  # DataFrames
     y = data[varMap['Dependent']]
 
-    # # Removing any missing data
-    # imputer = SimpleImputer(missing_values=np.nan , strategy='mean')
-    # imputer = imputer.fit(X[varMap['Missing']])
-    # X[varMap['Missing']] =imputer.transform(X[varMap['Missing']])
+    # Removing any missing data
+    imputer = SimpleImputer(missing_values=np.nan , strategy='mean')
+    imputer = imputer.fit(X[varMap['Missing']])
+    X[varMap['Missing']] =imputer.transform(X[varMap['Missing']])
 
     # Encoding Categorical Variables
     le = LabelEncoder()

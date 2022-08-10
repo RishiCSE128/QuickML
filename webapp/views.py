@@ -26,11 +26,15 @@ def base():
 # creates HTML table with attributes of file
 @views.route('/', methods=['POST'])
 def upload_file():
+    
     global filename
     file = request.files['file']
+    
+    # Saves the file so it can be accessed later on.
     dataSet = pd.read_csv(file)
     file.save(os.path.join(UPLOAD_FOLDER, file.filename))
     filename = file.filename
+
     return render_template('home.html', attributes = list(dataSet.columns))
 
 
@@ -108,6 +112,6 @@ def confusionMatrix():
     Y_test = pd.read_csv('pre_processed_data/yTest')
     Y_train = pd.read_csv('pre_processed_data/yTrain')
 
-    
+
 
     return render_template("results.html")
