@@ -12,7 +12,7 @@ from sourceCode import Simple_Linear_Regression as SLR
 views = Blueprint('base', __name__)
 
 # Constants to be used when user submitted file is stored
-UPLOAD_FOLDER = '/home/user/Documents/git/QuickML/sourceCode'
+UPLOAD_FOLDER = '/home/user/Documents/git/QuickML/sourceCode/'
 ALLOWED_EXTENSIONS = {'csv'}
 
 # Making 'filename' writeable by defining it in the global scope. 
@@ -22,6 +22,9 @@ filename = ''
 @views.route('/')
 def base(): 
     return render_template('base.html')
+
+
+# ================================================================= #
 
 # Invoked when user submits file -  
 # creates HTML table with attributes of file
@@ -33,10 +36,15 @@ def upload_file():
 
     # Saves the file so it can be accessed later on.
     dataSet = pd.read_csv(file)
+    file.seek(0)
     file.save(os.path.join(UPLOAD_FOLDER, file.filename))
     filename = file.filename
 
     return render_template('home.html', attributes = list(dataSet.columns))
+
+
+
+# ================================================================= #
 
 
 # Invoked when user submits variable mapping 
@@ -77,7 +85,9 @@ def dataPre():
     yTrain.to_csv(fN_yTr)
 
     # Getting the file out of the whole path and converting it to a dataframe.
-    dF = pd.read_csv(file.split('/')[-1])
+    name = file.split('/')[-1]
+    dF = pd.read_csv(
+        os.path.join('/home/user/Documents/git/QuickML/sourceCode', name))
     
     # Columns still hard coded! Fix before deploying to production. 
     col = dF.columns
@@ -106,8 +116,6 @@ def dataPre():
                 </div>
             </div>
     ''' )
-    # buliding APIs, data analytics, proficiency in python 
-    # python, docker, smart contracts (soliidty)
 
 @views.route('/Results', methods=["POST"])
 def confusionMatrix():
@@ -116,11 +124,5 @@ def confusionMatrix():
     Y_test = pd.read_csv('pre_processed_data/yTest')
     Y_train = pd.read_csv('pre_processed_data/yTrain')
 
-    print(X_train)
-    print(Y_train)
-    print('size of x = {0}'.format(X_train.size))
-    print('size of y = {0}'.format(Y_train.size))
-
-    x = SLR.simpleLinearRegression(X_test.iloc[:, :2], X_train.iloc[:, :2], Y_test, Y_train)
-
-    return render_template("results.html")
+    x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
+    print(x)

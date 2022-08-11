@@ -13,8 +13,11 @@ from sklearn.preprocessing import StandardScaler
 
 
 def dataPreProcess(dataSet, varMap):
-    print(dataSet)
-    data = pd.read_csv(dataSet.split('/')[-1])
+
+    filename = dataSet.split('/')[-1]  
+
+    data = pd.read_csv(
+	os.path.join('/home/user/Documents/git/QuickML/sourceCode', filename))
 
     varMap['Missing'] = data.columns[data.isnull().any()].tolist()
 
@@ -23,17 +26,20 @@ def dataPreProcess(dataSet, varMap):
     y = data[varMap['Dependent']]
 
     # Removing any missing data
-    imputer = SimpleImputer(missing_values=np.nan , strategy='mean')
-    imputer = imputer.fit(X[varMap['Missing']])
-    X[varMap['Missing']] =imputer.transform(X[varMap['Missing']])
+    if len(varMap['Missing']) > 0:
+        imputer = SimpleImputer(missing_values=np.nan , strategy='mean')
+        imputer = imputer.fit(X[varMap['Missing']])
+        X[varMap['Missing']] =imputer.transform(X[varMap['Missing']])
+	
 
     # Encoding Categorical Variables
-    le = LabelEncoder()
-    X[varMap['Categorical']]= pd.DataFrame(le.fit_transform(X[varMap['Categorical']]))
-    col_tans = make_column_transformer( 
+    if len(varMap['Categorical']) > 0:
+        le = LabelEncoder()
+        X[varMap['Categorical']]= pd.DataFrame(le.fit_transform(X[varMap['Categorical']]))
+        col_tans = make_column_transformer( 
                          (OneHotEncoder(), 
                          varMap['Categorical']))
-    Xtemp2 = col_tans.fit_transform(X[varMap['Categorical']])
+        Xtemp2 = col_tans.fit_transform(X[varMap['Categorical']])
     
     # Splitting Into Train and Test Set 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3 , random_state = 0)
@@ -42,6 +48,10 @@ def dataPreProcess(dataSet, varMap):
     scale_X = StandardScaler()
     X_train.iloc[: , :] = scale_X.fit_transform(X_train.iloc[: , :])
     X_test.iloc[: , :] = scale_X.fit_transform(X_test.iloc[: , :])
+
+#     scale_Y = StandardScaler()
+#     y_train.iloc[: , :] = scale_Y.fit_transform(y_train.iloc[: , :])
+#     y_test.iloc[: , :] = scale_Y.fit_transform(y_test.iloc[: , :])
 
     # Returns a dictionary of preprocessed data
     ret = {
