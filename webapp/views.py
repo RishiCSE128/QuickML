@@ -114,15 +114,20 @@ def dataPre():
                     {tabulate(table['X_test'], tablefmt='html', headers = col)}
                     {tabulate(table['y_test'], tablefmt='html', headers = col[4:])}
                 </div>
-            </div>
+            </div>  
     ''' )
 
 @views.route('/Results', methods=["POST"])
 def confusionMatrix():
-    X_test = pd.read_csv('pre_processed_data/xTest')
-    X_train = pd.read_csv('pre_processed_data/xTrain')
-    Y_test = pd.read_csv('pre_processed_data/yTest')
-    Y_train = pd.read_csv('pre_processed_data/yTrain')
+    X_test = pd.read_csv('pre_processed_data/xTest').values
+    X_train = pd.read_csv('pre_processed_data/xTrain').values
+    Y_test = pd.read_csv('pre_processed_data/yTest').values
+    Y_train = pd.read_csv('pre_processed_data/yTrain').values
+
 
     x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
-    print(x)
+
+    path = f'/home/user/Documents/git/QuickML/webapp/static/{x}.jpg'
+
+    return render_template('results.html', a = x)
+

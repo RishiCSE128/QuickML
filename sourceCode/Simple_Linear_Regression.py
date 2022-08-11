@@ -11,12 +11,17 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataset='Salary data'):
     
     regressor = LinearRegression()
     regressor.fit(Xtrain, Ytrain)   
+    
+    # print(Xtest[1:,1:].flatten())
+    # print(Ytest[1:,1:].flatten())
+    # print(Ytrain[1:,1:].flatten())
+    # print(Xtrain[1:,1:].flatten())
 
-    plt.suptitle(f'Linear Regression on {dataset}')
-    plt.scatter(Xtest, Ytest, color='blue', label='Test Samples')
-    plt.scatter(Xtrain,Ytrain,color='red', label = 'Train Samples')
-
-    plt.plot(Xtest, regressor.predict(Xtest), color ='green', label='Regression line')
+    # plt.suptitle(f'Linear Regression on {dataset}')
+    plt.scatter(Xtest[1:, 1:].flatten(), Ytest[1:, 1:].flatten(), color='blue', label='Test Samples')
+    plt.scatter(Xtrain[1:, 1:].flatten(),Ytrain[1:, 1:].flatten(),color='red', label = 'Train Samples')
+  
+    plt.plot(Xtest[1:, 1:].flatten(), regressor.predict(Xtest)[1:, 1:].flatten(), 'g:', label='Regression line')
 
     plt.legend()
     plt.grid()
