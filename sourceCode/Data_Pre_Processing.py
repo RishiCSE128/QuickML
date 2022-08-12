@@ -17,7 +17,7 @@ def dataPreProcess(dataSet, varMap):
     filename = dataSet.split('/')[-1]  
 
     data = pd.read_csv(
-	os.path.join('/home/user/Documents/git/QuickML/sourceCode', filename))
+        os.path.join('/home/user/Documents/git/QuickML/sourceCode', filename))
 
     varMap['Missing'] = data.columns[data.isnull().any()].tolist()
 

@@ -54,8 +54,12 @@ def dataPre():
     result =  request.get_json()
 
     # Dataset and variable mapping to be passed into the data
-    # pre-processing function
+    # pre-processing function - keep a reference to the var map
     varMap = json.loads(result)
+    # ddf = pd.DataFrame(varMap)
+    # fN_vM = '/home/user/Documents/git/QuickML/pre_processed_data/varMap'
+    # ddf.to_csv(fN_vM)
+
     file = os.path.join(UPLOAD_FOLDER, filename)
     # print(f"The file location is {file}")
     table = DPP.dataPreProcess(file, varMap)
@@ -124,10 +128,8 @@ def confusionMatrix():
     Y_test = pd.read_csv('pre_processed_data/yTest').values
     Y_train = pd.read_csv('pre_processed_data/yTrain').values
 
-
-    x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
-
-    path = f'/home/user/Documents/git/QuickML/webapp/static/{x}.jpg'
-
-    return render_template('results.html', a = x)
+    return render_template(
+        'results.html', 
+         x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
+    )
 

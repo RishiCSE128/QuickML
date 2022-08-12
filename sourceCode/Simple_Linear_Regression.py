@@ -7,36 +7,39 @@ from sklearn.linear_model import LinearRegression
 import time
 import random
 
-def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataset='Salary data'):
+def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain):
     
     regressor = LinearRegression()
     regressor.fit(Xtrain, Ytrain)   
 
-    # print(Xtest[1:,1:].flatten())
-    # print(Ytest[1:,1:].flatten())
-    # print(Ytrain[1:,1:].flatten())
-    # print(Xtrain[1:,1:].flatten())
-
-    # plt.suptitle(f'Linear Regression on {dataset}')
-
-
-
-    plt.scatter(Xtest[1:, 1:].flatten(), 
-                Ytest[1:, 1:].flatten(), 
-                color='blue', label='Test Samples')
+    Xtest[:,1:].tolist().sort()
+    Ytest[:,1:].tolist().sort()
+    Xtrain[:,1:].tolist().sort()
+    Ytrain[:,1:].tolist().sort()
+ 
+    plt.scatter(Xtest[:,:].transpose()[1:,:].tolist()[0], 
+                Ytest[:,:].transpose()[1:,:].tolist()[0], 
+                color='blue',   
+                label='Test Samples')
     
-    plt.scatter(Xtrain[1:, 1:].flatten(),
-                Ytrain[1:, 1:].flatten(),
+    plt.scatter(Xtrain[:,:].transpose()[1:,:].tolist()[0],
+                Ytrain[:,:].transpose()[1:,:].tolist()[0],
                 color='red', 
                 label = 'Train Samples')
   
-    plt.plot(Xtest[1:, 1:].transpose(), regressor.predict(Xtest)[1:, 1:].flatten(), 'g:', label='Regression line')
+    plt.plot(regressor.predict(Xtest), 
+             label='Regression line')
+
+
+    # plt.plot(Xtest[:,:].transpose()[1:,:].tolist()[0],
+    #          regressor.predict(Xtest)[:,:].transpose()[1:,:].tolist()[0], 
+    #          label='Regression line')
+    #'g:'#
 
     plt.legend()
     plt.grid()
 
     filename = f'{str(time.time())}_{random.randint(100,999)}'
     plt.savefig(f'/home/user/Documents/git/QuickML/webapp/static/{filename}.jpg')
-
 
     return filename

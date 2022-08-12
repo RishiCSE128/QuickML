@@ -9,6 +9,6 @@ app = create_app()
 
 if __name__ == '__main__':
     # Set fo False when running in production
-    app.run(debug=True, port = 5014)
+    app.run(debug=True, port = 5003)
 
     
