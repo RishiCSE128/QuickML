@@ -12,7 +12,7 @@ from sourceCode import Simple_Linear_Regression as SLR
 views = Blueprint('base', __name__)
 
 # Constants to be used when user submitted file is stored
-UPLOAD_FOLDER = '/home/user/Documents/git/QuickML/sourceCode/'
+UPLOAD_FOLDER = '/home/vladi/Documents/git/QuickML/sourceCode/'
 ALLOWED_EXTENSIONS = {'csv'}
 
 # Making 'filename' writeable by defining it in the global scope. 
@@ -74,10 +74,10 @@ def dataPre():
 
     # Creating variables to store file names and locations for pre 
     # processed data locations
-    fN_xT = '/home/user/Documents/git/QuickML/pre_processed_data/xTest'
-    fN_xTr = '/home/user/Documents/git/QuickML/pre_processed_data/xTrain'
-    fN_yT = '/home/user/Documents/git/QuickML/pre_processed_data/yTest'
-    fN_yTr = '/home/user/Documents/git/QuickML/pre_processed_data/yTrain'
+    fN_xT = '/home/vladi/Documents/git/QuickML/pre_processed_data/xTest'
+    fN_xTr = '/home/vladi/Documents/git/QuickML/pre_processed_data/xTrain'
+    fN_yT = '/home/vladi/Documents/git/QuickML/pre_processed_data/yTest'
+    fN_yTr = '/home/vladi/Documents/git/QuickML/pre_processed_data/yTrain'
 
     # pd.to_csv creates the file if it does not exist, but it does not 
     # create any non existent directories. The pre_processed_data directory 
@@ -91,7 +91,7 @@ def dataPre():
     # Getting the file out of the whole path and converting it to a dataframe.
     name = file.split('/')[-1]
     dF = pd.read_csv(
-        os.path.join('/home/user/Documents/git/QuickML/sourceCode', name))
+        os.path.join('/home/vladi/Documents/git/QuickML/sourceCode', name))
     
     # Columns still hard coded! Fix before deploying to production. 
     col = dF.columns

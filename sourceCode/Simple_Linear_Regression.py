@@ -27,7 +27,8 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain):
                 color='red', 
                 label = 'Train Samples')
   
-    plt.plot(regressor.predict(Xtest), 
+    plt.plot(Xtest[:,:].transpose()[1:,:].tolist()[0], 
+             regressor.predict(Xtest), 
              label='Regression line')
 
 
@@ -40,6 +41,6 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain):
     plt.grid()
 
     filename = f'{str(time.time())}_{random.randint(100,999)}'
-    plt.savefig(f'/home/user/Documents/git/QuickML/webapp/static/{filename}.jpg')
+    plt.savefig(f'/home/vladi/Documents/git/QuickML/webapp/static/{filename}.jpg')
 
     return filename
