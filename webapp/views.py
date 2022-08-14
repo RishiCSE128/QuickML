@@ -5,7 +5,7 @@ from flask import Blueprint, render_template, request, redirect, url_for
 import pandas as pd
 from sklearn import datasets
 from sourceCode import Data_Pre_Processing as DPP
-from sourceCode import Simple_Linear_Regression as SLR
+from sourceCode.regression import Simple_Linear_Regression as SLR
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -104,10 +104,10 @@ def dataPre():
             <div>
                 
                     <h3 style="text-align:left" class="btn btn-primary" data-toggle="collapse"
-                     href="#trainSet"> X train </h3> 
+                     href=".container list"> X train </h3> 
                     <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
                 
-                <div id="trainset" class="container" style="display:flex; width=60%">
+                <div id="trainset" class="container list" style="display:flex; width=60%">
                     {tabulate(table['X_train'], tablefmt='html', headers = col)}
                     {tabulate(table['y_train'], tablefmt='html', headers = col[4:])}
                 </div>
@@ -128,8 +128,11 @@ def confusionMatrix():
     Y_test = pd.read_csv('pre_processed_data/yTest').values
     Y_train = pd.read_csv('pre_processed_data/yTrain').values
 
+    x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
+    print(x)
+
     return render_template(
         'results.html', 
-         x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
+        y = x
     )
 
