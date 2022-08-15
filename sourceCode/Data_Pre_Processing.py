@@ -17,7 +17,7 @@ def dataPreProcess(dataSet, varMap):
     filename = dataSet.split('/')[-1]  
 
     data = pd.read_csv(
-        os.path.join('/home/user/Documents/git/QuickML/sourceCode', filename))
+        os.path.join('/home/vladi/Documents/git/QuickML/sourceCode', filename))
 
     varMap['Missing'] = data.columns[data.isnull().any()].tolist()
 
@@ -44,14 +44,15 @@ def dataPreProcess(dataSet, varMap):
     # Splitting Into Train and Test Set 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3 , random_state = 0)
 
-#     # Feature Scaling
-#     scale_X = StandardScaler()
-#     X_train.iloc[: , :] = scale_X.fit_transform(X_train.iloc[: , :])
-#     X_test.iloc[: , :] = scale_X.fit_transform(X_test.iloc[: , :])
+    if len(data.columns) > 2:
+        # Feature Scaling
+        scale_X = StandardScaler()
+        X_train.iloc[: , :] = scale_X.fit_transform(X_train.iloc[: , :])
+        X_test.iloc[: , :] = scale_X.fit_transform(X_test.iloc[: , :])
 
-#     scale_Y = StandardScaler()
-#     y_train.iloc[: , :] = scale_Y.fit_transform(y_train.iloc[: , :])
-#     y_test.iloc[: , :] = scale_Y.fit_transform(y_test.iloc[: , :])
+        scale_Y = StandardScaler()
+        y_train.iloc[: , :] = scale_Y.fit_transform(y_train.iloc[: , :])
+        y_test.iloc[: , :] = scale_Y.fit_transform(y_test.iloc[: , :])
 
     # Returns a dictionary of preprocessed data
     ret = {

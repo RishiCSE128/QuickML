@@ -5,14 +5,14 @@ from flask import Blueprint, render_template, request, redirect, url_for
 import pandas as pd
 from sklearn import datasets
 from sourceCode import Data_Pre_Processing as DPP
-from sourceCode import Simple_Linear_Regression as SLR
+from sourceCode.regression import Simple_Linear_Regression as SLR
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
 views = Blueprint('base', __name__)
 
 # Constants to be used when user submitted file is stored
-UPLOAD_FOLDER = '/home/user/Documents/git/QuickML/sourceCode/'
+UPLOAD_FOLDER = '/home/vladi/Documents/git/QuickML/sourceCode/'
 ALLOWED_EXTENSIONS = {'csv'}
 
 # Making 'filename' writeable by defining it in the global scope. 
@@ -74,10 +74,10 @@ def dataPre():
 
     # Creating variables to store file names and locations for pre 
     # processed data locations
-    fN_xT = '/home/user/Documents/git/QuickML/pre_processed_data/xTest'
-    fN_xTr = '/home/user/Documents/git/QuickML/pre_processed_data/xTrain'
-    fN_yT = '/home/user/Documents/git/QuickML/pre_processed_data/yTest'
-    fN_yTr = '/home/user/Documents/git/QuickML/pre_processed_data/yTrain'
+    fN_xT = '/home/vladi/Documents/git/QuickML/pre_processed_data/xTest'
+    fN_xTr = '/home/vladi/Documents/git/QuickML/pre_processed_data/xTrain'
+    fN_yT = '/home/vladi/Documents/git/QuickML/pre_processed_data/yTest'
+    fN_yTr = '/home/vladi/Documents/git/QuickML/pre_processed_data/yTrain'
 
     # pd.to_csv creates the file if it does not exist, but it does not 
     # create any non existent directories. The pre_processed_data directory 
@@ -91,7 +91,7 @@ def dataPre():
     # Getting the file out of the whole path and converting it to a dataframe.
     name = file.split('/')[-1]
     dF = pd.read_csv(
-        os.path.join('/home/user/Documents/git/QuickML/sourceCode', name))
+        os.path.join('/home/vladi/Documents/git/QuickML/sourceCode', name))
     
     # Columns still hard coded! Fix before deploying to production. 
     col = dF.columns
@@ -104,10 +104,10 @@ def dataPre():
             <div>
                 
                     <h3 style="text-align:left" class="btn btn-primary" data-toggle="collapse"
-                     href="#trainSet"> X train </h3> 
+                     href=".container list"> X train </h3> 
                     <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
                 
-                <div id="trainset" class="container" style="display:flex; width=60%">
+                <div id="trainset" class="container list" style="display:flex; width=60%">
                     {tabulate(table['X_train'], tablefmt='html', headers = col)}
                     {tabulate(table['y_train'], tablefmt='html', headers = col[4:])}
                 </div>
@@ -128,8 +128,11 @@ def confusionMatrix():
     Y_test = pd.read_csv('pre_processed_data/yTest').values
     Y_train = pd.read_csv('pre_processed_data/yTrain').values
 
+    x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
+    print(x)
+
     return render_template(
         'results.html', 
-         x = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train)
+        y = x
     )
 
