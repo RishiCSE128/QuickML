@@ -62,10 +62,6 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
 
     YTrain_Hat_Plot = Ytrain_temp.transpose()[1:,:].tolist()[0]
 
-    print(YTrain_Hat_Plot)
-
-    # print(YTrain_Hat_Plot)
-
     plt.plot(sorted(XTest_Plot),
              sorted(YTrain_Hat_Plot),
              label='Regression line')

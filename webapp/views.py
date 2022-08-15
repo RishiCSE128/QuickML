@@ -1,5 +1,6 @@
 import os
 import json
+from tkinter import S
 from tabulate import tabulate
 from flask import Blueprint, render_template, request, redirect, url_for
 import pandas as pd
@@ -133,6 +134,13 @@ def confusionMatrix():
     Y_test = pd.read_csv('pre_processed_data/yTest').values
     Y_train = pd.read_csv('pre_processed_data/yTrain').values
 
+    os.remove('pre_processed_data/xTest')
+    os.remove('pre_processed_data/xTrain')
+    os.remove('pre_processed_data/yTest')
+    os.remove('pre_processed_data/yTrain')
+
+    os.remove(f'sourceCode/{filename}')
+
     global name 
     
     name = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train, filename)
@@ -149,12 +157,17 @@ def confusionMatrix():
 
 @views.route('/ProcessOption/<string:option>', methods=['POST'])
 def SaveOption(option):
-    option = json.loads(option)
+    sel = json.loads(option)
 
-
+    with open("choice.txt", "w") as fo:
+        fo.write(sel)
+    return 1
 
 @views.route('/FinalModel')
 def showModel():
+
+    os.remove('/home/user/Documents/git/QuickML/choice.txt')
+
     return render_template(
         'Model_Display.html',
         x = name.split('/')[-1]
