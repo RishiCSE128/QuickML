@@ -21,17 +21,16 @@ def fig_to_base64(fig):
     return base64.b64encode(img.getvalue())
 
 # SIMPLE LINEAR REGRESSION
-def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain):
-    
+def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
+    """
+    Takes the train and test split of the dataset, as well as name
+    of the uploaded dataSet. 
+    """
+    #
     regressor = LinearRegression()
     regressor.fit(Xtrain, Ytrain)   
 
-    Xtest[:,1:].tolist().sort()
-    Ytest[:,1:].tolist().sort()
-    Xtrain[:,1:].tolist().sort()
-    Ytrain[:,1:].tolist().sort()
- 
-    fig = plt.figure()
+    plt.title(f'Linear Regression for Dataset: {dataSet}')
 
     plt.scatter(Xtest[:,:].transpose()[1:,:].tolist()[0], 
                 Ytest[:,:].transpose()[1:,:].tolist()[0], 
@@ -43,21 +42,37 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain):
                 color='red', 
                 label = 'Train Samples')
   
-    plt.plot(Xtest[:,:].transpose()[1:,:].tolist()[0],
-             regressor.predict(Xtest)[:,:].transpose()[1:,:].tolist()[0], 
+    XTest_Plot = Xtest[:,:].transpose()[1:,:].tolist()[0]
+    (Ytrain[:,:].transpose()[1:,:].tolist()[0])
+
+    Ytrain_temp = regressor.predict(Xtest) 
+
+    YTrain_Hat_Plot = Ytrain_temp.transpose()[1:,:].tolist()[0]
+
+    print(YTrain_Hat_Plot)
+
+    # print(YTrain_Hat_Plot)
+
+    plt.plot(sorted(XTest_Plot),
+             sorted(YTrain_Hat_Plot),
              label='Regression line')
+
+    # plt.plot(Xtest[:,:].transpose()[1:,:].tolist()[0],
+    #          regressor.predict(Xtest)[:,:].transpose()[1:,:].tolist()[0], 
+    #          label='Regression line')
     #'g:'#
 
     plt.legend()
     plt.grid()
 
     filename = f'{random.randint(100,999)}'
-    plt.savefig(f'/home/vladi/Documents/git/QuickML/webapp/static/{filename}.png')
+    plt.savefig(f'/home/user/Documents/git/QuickML/webapp/static/{filename}.jpg')
 
-    encoded = fig_to_base64(fig)
+    x = f'/home/user/Documents/git/QuickML/webapp/static/{filename}.jpg'
 
-    my_html = '<img src="data:image/png;charset=utf-8;base64, {}">'.format(encoded.decode('utf-8'))
-
-    return encoded
+    return x 
 
 # MULTIPLE LINEAR REGRESSION 
+def multipleLinearRegression(Xtest, Xtrain, Ytest, Ytrain):
+    
+    return 1 

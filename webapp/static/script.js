@@ -22,17 +22,14 @@ document.querySelectorAll('.choice').forEach(item => {
   item.addEventListener("click", event => {
     var value = item.value;
     console.log(value);
+
+    let option = value
+    console.log(option)
+    const request = new XMLHttpRequest()
+    request.open('POST', `/ProcessOption/${JSON.stringify(option)}`)
+    request.send();
   })
 })
-
-
-//     var fso = CreateObject("Scripting.FileSystemObject"); 
-//     var s  = fso.CreateTextFile("<your Path>/filename.txt", True);
-
-//     x = item.value;
-//     s.WriteLine(x);
-//     s.Close();
-
 
 function isChecked(x) {
   const radioButtons = document.querySelectorAll('.rd');
