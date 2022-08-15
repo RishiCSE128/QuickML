@@ -31,7 +31,6 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     to saved figure as jpg.
     """
     
-
     regressor = LinearRegression()
     regressor.fit(Xtrain, Ytrain)   
 
