@@ -4,8 +4,11 @@ from tabulate import tabulate
 from flask import Blueprint, render_template, request, redirect, url_for
 import pandas as pd
 from sklearn import datasets
+
 from sourceCode import Data_Pre_Processing as DPP
+
 from sourceCode.regression import Simple_Linear_Regression as SLR
+from sourceCode.regression import Multiple_Linear_Regression as MLR
 
 
 # Defining 'views' blueprint. 

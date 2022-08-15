@@ -3,6 +3,8 @@ from email.encoders import encode_7or8bit
 from turtle import color
 import numpy as np
 import pandas as pd
+import matplotlib as mpl
+mpl.use("TkAgg")
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import time
@@ -26,9 +28,20 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     Takes the train and test split of the dataset, as well as name
     of the uploaded dataSet. 
     """
-    #
+    
+    
+
     regressor = LinearRegression()
     regressor.fit(Xtrain, Ytrain)   
+
+    # plt.rcParams['backend'] = 'GTK3Agg'
+
+    #'GTK3Agg', 'GTK3Cairo', 'GTK4Agg', 'GTK4Cairo', 'MacOSX', 
+    # 'nbAgg', 'QtAgg', 'QtCairo', 'Qt5Agg', 'Qt5Cairo', 'TkAgg', 
+    # 'TkCairo', 'WebAgg', 'WX', 'WXAgg', 'WXCairo', 
+    # 'agg', 'cairo', 'pdf', 'pgf', 'ps', 'svg', 'template'
+
+
 
     plt.title(f'Linear Regression for Dataset: {dataSet}')
 
@@ -57,11 +70,6 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
              sorted(YTrain_Hat_Plot),
              label='Regression line')
 
-    # plt.plot(Xtest[:,:].transpose()[1:,:].tolist()[0],
-    #          regressor.predict(Xtest)[:,:].transpose()[1:,:].tolist()[0], 
-    #          label='Regression line')
-    #'g:'#
-
     plt.legend()
     plt.grid()
 
@@ -72,7 +80,3 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
 
     return x 
 
-# MULTIPLE LINEAR REGRESSION 
-def multipleLinearRegression(Xtest, Xtrain, Ytest, Ytrain):
-    
-    return 1 
