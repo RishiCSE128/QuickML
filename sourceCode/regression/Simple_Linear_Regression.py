@@ -26,22 +26,14 @@ def fig_to_base64(fig):
 def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     """
     Takes the train and test split of the dataset, as well as name
-    of the uploaded dataSet. 
+    of the uploaded dataSet. Fits a regressor and plots a simple
+    linear regression on the dataset. Saves the figure and returns path
+    to saved figure as jpg.
     """
-    
     
 
     regressor = LinearRegression()
     regressor.fit(Xtrain, Ytrain)   
-
-    # plt.rcParams['backend'] = 'GTK3Agg'
-
-    #'GTK3Agg', 'GTK3Cairo', 'GTK4Agg', 'GTK4Cairo', 'MacOSX', 
-    # 'nbAgg', 'QtAgg', 'QtCairo', 'Qt5Agg', 'Qt5Cairo', 'TkAgg', 
-    # 'TkCairo', 'WebAgg', 'WX', 'WXAgg', 'WXCairo', 
-    # 'agg', 'cairo', 'pdf', 'pgf', 'ps', 'svg', 'template'
-
-
 
     plt.title(f'Linear Regression for Dataset: {dataSet}')
 
