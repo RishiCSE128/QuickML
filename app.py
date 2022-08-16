@@ -5,9 +5,9 @@ from flask import Flask, render_template, request
 import pandas as pd
 
 
-app = create_app()
+app = create_app() 
 
 if __name__ == '__main__':
     # Set fo False when running in production
-    app.run(debug=True, port = 5015)
+    app.run(debug=True, port = 5004)
 

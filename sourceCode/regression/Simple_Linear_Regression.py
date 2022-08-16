@@ -14,14 +14,6 @@ import io
 import base64
 
 
-def fig_to_base64(fig):
-    img = io.BytesIO()
-    fig.savefig(img, format='png',
-                bbox_inches='tight')
-    img.seek(0)
-
-    return base64.b64encode(img.getvalue())
-
 # SIMPLE LINEAR REGRESSION
 def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     """
