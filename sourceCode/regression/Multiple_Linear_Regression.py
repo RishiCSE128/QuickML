@@ -8,12 +8,11 @@ import matplotlib as mpl
 # Using TgAgg backend to make matplotlib thread safe
 mpl.use("TkAgg")
 
+# import statsmodels.formula.api 
+
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-import time
-import random
 from sklearn.metrics import confusion_matrix
-import statsmodels as sm 
 
 # MULTIPLE LINEAR REGRESSION 
 def multipleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataset):
