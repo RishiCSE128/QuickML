@@ -128,7 +128,7 @@ def dataPre():
     ''' )
 
 @views.route('/Results', methods=["POST"])
-def confusionMatrix():
+def createModel():
     X_test = pd.read_csv('pre_processed_data/xTest').values
     X_train = pd.read_csv('pre_processed_data/xTrain').values
     Y_test = pd.read_csv('pre_processed_data/yTest').values
@@ -143,17 +143,18 @@ def confusionMatrix():
 
     global name 
     
-    name = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train, filename)
+    with open('choice.txt') as f:
+        n = f.read()
+
+    if n == 'ML-REG-SLR':
+        name = SLR.simpleLinearRegression(
+            X_test, X_train, Y_test, Y_train, filename)     
+    elif n == 'ML-REG-MLR':
+        name = MLR.multipleLinearRegression(
+            X_test, X_train, Y_test, Y_train, filename) 
 
     return render_template('results.html', x = name)
 
-# @views.route('/<name>')
-# def returnModel():
-
-#     x = name
-
-
-#     return x
 
 @views.route('/ProcessOption/<string:option>', methods=['POST'])
 def SaveOption(option):
