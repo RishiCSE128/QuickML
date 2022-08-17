@@ -1,23 +1,22 @@
 import os
 import json
-from tkinter import S
+# from tkinter import S
 from tabulate import tabulate
 from flask import Blueprint, render_template, request, redirect, url_for
 import pandas as pd
-from sklearn import datasets
+# from sklearn import datasets
 
 from sourceCode import Data_Pre_Processing as DPP
 
 from sourceCode.regression import Simple_Linear_Regression as SLR
 from sourceCode.regression import Multiple_Linear_Regression as MLR
 
-
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
 views = Blueprint('base', __name__)
 
 # Constants to be used when user submitted file is stored
-UPLOAD_FOLDER = '/home/user/Documents/git/QuickML/sourceCode/'
+UPLOAD_FOLDER = '../QuickML/sourceCode/'
 ALLOWED_EXTENSIONS = {'csv'}
 
 # Making variables writeable by defining it in the global scope. 
@@ -80,10 +79,10 @@ def dataPre():
 
     # Creating variables to store file names and locations for pre 
     # processed data locations
-    fN_xT = '/home/user/Documents/git/QuickML/pre_processed_data/xTest'
-    fN_xTr = '/home/user/Documents/git/QuickML/pre_processed_data/xTrain'
-    fN_yT = '/home/user/Documents/git/QuickML/pre_processed_data/yTest'
-    fN_yTr = '/home/user/Documents/git/QuickML/pre_processed_data/yTrain'
+    fN_xT = '../QuickML/pre_processed_data/xTest'
+    fN_xTr = '../QuickML/pre_processed_data/xTrain'
+    fN_yT = '../QuickML/pre_processed_data/yTest'
+    fN_yTr = '../QuickML/pre_processed_data/yTrain'
 
     # pd.to_csv creates the file if it does not exist, but it does not 
     # create any non existent directories. The pre_processed_data directory 
@@ -97,7 +96,7 @@ def dataPre():
     # Getting the file out of the whole path and converting it to a dataframe.
     name = file.split('/')[-1]
     dF = pd.read_csv(
-        os.path.join('/home/user/Documents/git/QuickML/sourceCode', name))
+        os.path.join('../QuickML/sourceCode', name))
     
     # Columns still hard coded! Fix before deploying to production. 
     col = dF.columns
@@ -133,7 +132,7 @@ def createModel():
     X_train = pd.read_csv('pre_processed_data/xTrain').values
     Y_test = pd.read_csv('pre_processed_data/yTest').values
     Y_train = pd.read_csv('pre_processed_data/yTrain').values
-
+    # Removing files after they are no longer necessary.
     os.remove('pre_processed_data/xTest')
     os.remove('pre_processed_data/xTrain')
     os.remove('pre_processed_data/yTest')
@@ -142,24 +141,26 @@ def createModel():
     os.remove(f'sourceCode/{filename}')
 
     global name 
-    
+    # Obtaining the choice the user makes
     with open('choice.txt') as f:
         n = f.read()
+        
+    # Invoking the corresponding Algorithm 
+    if n == 'ML-REG-MLR':
+        name = MLR.multipleLinearRegression(X_test, X_train, Y_test, Y_train, filename)     
 
     if n == 'ML-REG-SLR':
-        name = SLR.simpleLinearRegression(
-            X_test, X_train, Y_test, Y_train, filename)     
-    elif n == 'ML-REG-MLR':
-        name = MLR.multipleLinearRegression(
-            X_test, X_train, Y_test, Y_train, filename) 
+        name = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train, filename) 
 
-    return render_template('results.html', x = name)
+    return render_template('results.html')
 
 
 @views.route('/ProcessOption/<string:option>', methods=['POST'])
 def SaveOption(option):
+    # Loads the json string to a normal string
     sel = json.loads(option)
-
+    # Writes the users choice to a text file to
+    # be kept for later reference.
     with open("choice.txt", "w") as fo:
         fo.write(sel)
     return 1
@@ -167,7 +168,7 @@ def SaveOption(option):
 @views.route('/FinalModel')
 def showModel():
 
-    os.remove('/home/user/Documents/git/QuickML/choice.txt')
+    os.remove('../QuickML/choice.txt')
 
     return render_template(
         'Model_Display.html',

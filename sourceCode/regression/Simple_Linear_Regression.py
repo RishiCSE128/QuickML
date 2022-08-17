@@ -1,6 +1,8 @@
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
+
+
 mpl.use("TkAgg")
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
@@ -46,9 +48,9 @@ def simpleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     plt.grid()
 
     filename = f'{random.randint(100,999)}'
-    plt.savefig(f'/home/user/Documents/git/QuickML/webapp/static/{filename}.jpg')
+    plt.savefig(f'../QuickML/webapp/static/{filename}.jpg')
 
-    x = f'/home/user/Documents/git/QuickML/webapp/static/{filename}.jpg'
+    x = f'../QuickML/webapp/static/{filename}.jpg'
 
     return x 
 

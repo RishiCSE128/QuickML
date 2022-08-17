@@ -20,7 +20,7 @@ def dataPreProcess(dataSet, varMap):
         choice = f.read()
 
     data = pd.read_csv(
-        os.path.join('/home/user/Documents/git/QuickML/sourceCode', filename))
+        os.path.join('../QuickML/sourceCode', filename))
 
     varMap['Missing'] = data.columns[data.isnull().any()].tolist()
 
