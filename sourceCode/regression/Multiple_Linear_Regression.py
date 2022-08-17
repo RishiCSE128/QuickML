@@ -19,7 +19,9 @@ from sklearn.metrics import confusion_matrix
 # MULTIPLE LINEAR REGRESSION 
 def multipleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     '''
-
+    Takes pre processed data and the dataSet which expects the algorithm
+    to be placed on its data. It saves the graph as a figure and returns it 
+    to be later displayed in the html.  
     '''
 
     # Fitting Multiple Linear Regression to Training Set 
