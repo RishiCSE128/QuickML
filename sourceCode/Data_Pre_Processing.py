@@ -19,6 +19,8 @@ def dataPreProcess(dataSet, varMap):
     with open('choice.txt') as f: 
         choice = f.read()
 
+    print(f'================= {choice}===============')
+
     data = pd.read_csv(
         os.path.join('../QuickML/sourceCode', filename))
 
@@ -44,10 +46,11 @@ def dataPreProcess(dataSet, varMap):
                          varMap['Categorical']))
         # Xtemp2 = col_tans.fit_transform(X[varMap['Categorical']])
     
+
     # Splitting Into Train and Test Set 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.3 , random_state = 0)
 
-    if choice != 'ML-REG-SLR' or choice != 'ML-REG-MLR':
+    if choice != 'ML-REG-SLR' and choice != 'ML-REG-MLR' and choice != 'ML-REG-PLR':
         # Feature Scaling
         scale_X = StandardScaler()
         X_train.iloc[: , :] = scale_X.fit_transform(X_train.iloc[: , :])

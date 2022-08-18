@@ -54,7 +54,8 @@ function makeVarMap() {
   var varMap = {
     'Independent': [],
     'Dependent': [],
-    'Categorical': []
+    'Categorical': [],
+    'Ignored': []
   }
 
   var head = [];
@@ -69,6 +70,10 @@ function makeVarMap() {
     }
     if (radioButtons[x].checked && radioButtons[x].value == 'Dep') {
       varMap['Dependent'].push(head[j]);
+      j++;
+    }
+    if (radioButtons[x].checked && radioButtons[x].value == 'Ignored') {
+      varMap['Ignored'].push(head[j]);
       j++;
     }
     if (radioButtons[x].checked && radioButtons[x].value == 'Cat') {

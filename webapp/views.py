@@ -10,6 +10,7 @@ from sourceCode import Data_Pre_Processing as DPP
 
 from sourceCode.regression import Simple_Linear_Regression as SLR
 from sourceCode.regression import Multiple_Linear_Regression as MLR
+from sourceCode.regression import Polynomial_Linear_Regression as PLR
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -101,13 +102,12 @@ def dataPre():
     # Columns still hard coded! Fix before deploying to production. 
     col = dF.columns
 
-    # return formattes string which contains HTML and HTML tables using 
+    # returns formatted string which contains HTML and HTML tables using 
     # the 'tabulate' module
     return (f'''
             <h2 style="text-align:center">Scroll to Preview your Pre-Processed Data!</h2>
             <hr>
             <div>
-                
                     <h3 style="text-align:left" class="btn btn-primary" data-toggle="collapse"
                      href=".container list"> X train </h3> 
                     <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
@@ -126,12 +126,16 @@ def dataPre():
             </div>  
     ''' )
 
+# Invoked when user submits pre-processed Data
 @views.route('/Results', methods=["POST"])
 def createModel():
+
+    # Reading files and assigning their values to variables 
     X_test = pd.read_csv('pre_processed_data/xTest').values
     X_train = pd.read_csv('pre_processed_data/xTrain').values
     Y_test = pd.read_csv('pre_processed_data/yTest').values
     Y_train = pd.read_csv('pre_processed_data/yTrain').values
+
     # Removing files after they are no longer necessary.
     os.remove('pre_processed_data/xTest')
     os.remove('pre_processed_data/xTrain')
@@ -141,7 +145,7 @@ def createModel():
     os.remove(f'sourceCode/{filename}')
 
     global name 
-    # Obtaining the choice the user makes
+    # Obtaining the choice the user makes & writing to 
     with open('choice.txt') as f:
         n = f.read()
         
@@ -152,9 +156,12 @@ def createModel():
     if n == 'ML-REG-SLR':
         name = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train, filename) 
 
+    if n == 'ML-REG-PLR':
+        name = PLR.polynomialLinearRegression(X_test, X_train, Y_test, Y_train, filename)
+
     return render_template('results.html')
 
-
+# Invoked when user selects algorithm 
 @views.route('/ProcessOption/<string:option>', methods=['POST'])
 def SaveOption(option):
     # Loads the json string to a normal string
@@ -165,9 +172,10 @@ def SaveOption(option):
         fo.write(sel)
     return 1
 
+# Invoked after user selects button to see their ML model
 @views.route('/FinalModel')
 def showModel():
-
+    # Removing final unecessary file
     os.remove('../QuickML/choice.txt')
 
     return render_template(
