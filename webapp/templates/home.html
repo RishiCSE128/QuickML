@@ -22,18 +22,18 @@
             data are not numerical, they represent categories.
         </p>
 
-        <table id="data">
+        <table id="data" class="table">
             <tr>
-                <th></th>
-                <th>Independent</th>
-                <th>Dependent</th>
-                <th>Categorical</th>
-                <th>Ignore</th>
+                <th scope ='col'></th>
+                <th scope ='col'>Independent</th>
+                <th scope ='col'>Dependent</th>
+                <th scope ='col'>Categorical</th>
+                <th scope ='col'>Ignore</th>
             </tr>
             <div>
                 {% for i in attributes: %}
                 <tr>
-                    <th class="rt" value='{{i}}'>{{i}}</th>
+                    <th scope="row" class="rt" value='{{i}}'>{{i}}</th>
                     <td><input class='rd' type="radio" name='test_{{attributes.index(i)}}' value="Ind"></td>
                     <td><input class='rd dep' type="radio" name='test_{{attributes.index(i)}}' value="Dep"></td>
                     <td><input class='rd' type="checkbox" value="Cat"></td>

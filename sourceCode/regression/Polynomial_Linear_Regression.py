@@ -10,7 +10,7 @@ mpl.use("TkAgg")
 
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import confusion_matrix
+
 
 # POLYNOMIAL LINEAR REGRESSION 
 def polynomialLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
@@ -21,20 +21,12 @@ def polynomialLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     YTrain = Ytrain[:,:].transpose()[1:,:].tolist()[0]
     YTest = Ytest[:,:].transpose()[1:,:].tolist()[0]
 
-    # print(f'===== XTRAIN ========{XTrain}')
-    # print(f'===== XTEST ========{XTest}')
-    # print(f'===== YTEST ========{YTest}')
-    # print(f'===== YTRAIN ========{YTrain}')
-
     # PLR doesn't need a train test split, so the individual components 
     # are combined to form the original dataset (except now its pre-processed)
     X_combined = np.r_[XTrain, XTest]
     Y_combined = np.r_[YTrain, YTest]
 
-    # print(X_combined)
-    # print(Y_combined)
-
-
+    
     X_combined = np.array(X_combined, dtype='int')
     Y_combined = np.array(Y_combined, dtype='int')
 
@@ -48,7 +40,7 @@ def polynomialLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     X_Comb_Poly = X_combined.reshape(-1,1)
     X_poly = poly_reg.fit_transform(X_Comb_Poly)
 
-    # New linear regression fitted  augmented X matrix and 
+    # New linear regression fitted onaugmented X matrix and 
     # original Y vector. 
     lin_reg2 = LinearRegression()
     lin_reg2.fit(X_poly, Y_combined)
@@ -64,15 +56,17 @@ def polynomialLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
              color = 'blue', 
              label = 'Linear')
 
+    print(f'{X_poly}============')
+
+    X_combined_Plot = X_combined.tolist()
+    X_poly_Plot = X_poly.tolist()
+
     # Plotting predicted values via polynomial regression
-    plt.plot(X_combined, 
-             lin_reg2.predict(X_poly), 
+    plt.plot(sorted(X_combined_Plot),
+             lin_reg2.predict(sorted(X_poly_Plot)), 
+             # lin_reg2.predict(poly_reg.fit_transform(X_combined.reshape(-1,1))), 
              color = 'green', 
              label = 'Poylnomial')
-
-
-
-
 
 
     plt.legend()          

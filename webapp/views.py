@@ -113,15 +113,15 @@ def dataPre():
                     <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
                 
                 <div id="trainset" class="container list" style="display:flex; width=60%">
-                    {tabulate(table['X_train'], tablefmt='html', headers = col)}
-                    {tabulate(table['y_train'], tablefmt='html', headers = col[4:])}
+                    {tabulate(table['X_train'], tablefmt='html')}
+                    {tabulate(table['y_train'], tablefmt='html')}
                 </div>
                 <hr>
                 <h3 style="text-align:left"> X test </h3> 
                 <h3 style="text-align:right; margin-top:-40px"> Y test </h3> <hr><br>
                 <div class="container" style="display:flex; width=60%">
-                    {tabulate(table['X_test'], tablefmt='html', headers = col)}
-                    {tabulate(table['y_test'], tablefmt='html', headers = col[4:])}
+                    {tabulate(table['X_test'], tablefmt='html')}
+                    {tabulate(table['y_test'], tablefmt='html')}
                 </div>
             </div>  
     ''' )
