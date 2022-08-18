@@ -6,8 +6,11 @@ import random
 # Using TgAgg backend to make matplotlib thread safe
 mpl.use("TkAgg")
 
+# import statsmodels.formula.api 
+
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
+
 
 # MULTIPLE LINEAR REGRESSION 
 def multipleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):

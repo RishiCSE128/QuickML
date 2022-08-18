@@ -43,9 +43,10 @@ def polynomialLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     lin_reg.fit(X_combined.reshape(-1,1), Y_combined)
 
     # Creating a polynomial regressor
-    poly_reg = PolynomialFeatures(degree=2)
+    poly_reg = PolynomialFeatures(degree=3)
     # Transforming X from just X to X + its polynomial terms
-    X_poly = poly_reg.fit_transform(X_combined.reshape(-1,1))
+    X_Comb_Poly = X_combined.reshape(-1,1)
+    X_poly = poly_reg.fit_transform(X_Comb_Poly)
 
     # New linear regression fitted  augmented X matrix and 
     # original Y vector. 
@@ -65,7 +66,7 @@ def polynomialLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
 
     # Plotting predicted values via polynomial regression
     plt.plot(X_combined, 
-             lin_reg2.predict(poly_reg.fit_transform(X_combined.reshape(-1,1))), 
+             lin_reg2.predict(X_poly), 
              color = 'green', 
              label = 'Poylnomial')
 

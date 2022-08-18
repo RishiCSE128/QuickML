@@ -72,7 +72,7 @@ function makeVarMap() {
       varMap['Dependent'].push(head[j]);
       j++;
     }
-    if (radioButtons[x].checked && radioButtons[x].value == 'Ignored') {
+    if (radioButtons[x].checked && radioButtons[x].value == 'Ignore') {
       varMap['Ignored'].push(head[j]);
       j++;
     }

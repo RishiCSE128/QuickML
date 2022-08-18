@@ -14,8 +14,10 @@ from sklearn.preprocessing import StandardScaler
 
 def dataPreProcess(dataSet, varMap):
 
-    filename = dataSet.split('/')[-1]  
 
+    # Extractin the filename from the file path
+    filename = dataSet.split('/')[-1]  
+    # Rreading user's choice from the file
     with open('choice.txt') as f: 
         choice = f.read()
 
@@ -25,6 +27,8 @@ def dataPreProcess(dataSet, varMap):
         os.path.join('../QuickML/sourceCode', filename))
 
     varMap['Missing'] = data.columns[data.isnull().any()].tolist()
+
+    data.drop(varMap['Ignored'], axis=1)
 
     # Splitting Dependent & Independent Variables
     X = data[varMap['Independent']]  # DataFrames
@@ -37,7 +41,7 @@ def dataPreProcess(dataSet, varMap):
         X[varMap['Missing']] =imputer.transform(X[varMap['Missing']])
 	
 
-    # Encoding Categorical Variables
+    # Encoding Categorical Variables  
     if len(varMap['Categorical']) > 0:
         le = LabelEncoder()
         X[varMap['Categorical']]= pd.DataFrame(le.fit_transform(X[varMap['Categorical']]))
