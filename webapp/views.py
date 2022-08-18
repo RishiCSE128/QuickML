@@ -11,6 +11,7 @@ from sourceCode import Data_Pre_Processing as DPP
 from sourceCode.regression import Simple_Linear_Regression as SLR
 from sourceCode.regression import Multiple_Linear_Regression as MLR
 from sourceCode.regression import Polynomial_Linear_Regression as PLR
+from sourceCode.regression import Support_Vector_Regression as SVR
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -155,9 +156,10 @@ def createModel():
 
     if n == 'ML-REG-SLR':
         name = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train, filename) 
-
     if n == 'ML-REG-PLR':
         name = PLR.polynomialLinearRegression(X_test, X_train, Y_test, Y_train, filename)
+    if n == 'ML-REG-SVfR':
+        name = SVR.supportVectorRegression(X_test, X_train, Y_test, Y_train, filename)
 
     return render_template('results.html')
 
