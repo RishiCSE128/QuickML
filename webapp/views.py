@@ -184,3 +184,10 @@ def showModel():
         'Model_Display.html',
         x = name.split('/')[-1]
     )
+
+@views.route('/')
+def refresh():
+    y = name.split('/')[-1]
+    os.remove(y)
+
+    return render_template('base.html')

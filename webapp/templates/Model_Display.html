@@ -8,8 +8,9 @@
 <div>
     <img src ="{{url_for('static', filename=x)}}">
 
-
-    <input type = 'reset' value = 'REFRESH'></a>
+    <form action = "{{url_for('base.refresh')}}">
+        <input type = 'submit' value = 'REFRESH'></a>
+    </form>
 </div>
 
 
