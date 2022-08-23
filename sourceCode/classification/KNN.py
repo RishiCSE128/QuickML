@@ -22,7 +22,7 @@ from sklearn.metrics import plot_confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
-# MULTIPLE LINEAR REGRESSION 
+# KNN
 def K_Nearest_Neighbours(Xtest, Xtrain, Ytest, Ytrain, dataSet):
 
     # Formatting the dataSets for analysis
