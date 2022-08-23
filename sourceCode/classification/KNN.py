@@ -56,16 +56,16 @@ def K_Nearest_Neighbours(Xtest, Xtrain, Ytest, Ytrain, dataSet):
 
     plot_confusion_matrix(clf, XTest.reshape(-1,1), YTest.reshape(-1,1))
 
-    fig = plt.figure()
-
-    plt.show()
-
     plt.title(f'K Nearest Neighbours Classification for {dataSet}')
 
-    plt.legend()          
+    plt.legend() 
 
+    # plt.matshow(dcm)
+
+
+            
     filename = f'{random.randint(100,999)}'
-    fig.savefig(f'../QuickML/webapp/static/{filename}.jpg')
+    plt.savefig(f'../QuickML/webapp/static/{filename}.jpg')
 
     x = f'../QuickML/webapp/static/{filename}.jpg'
 
