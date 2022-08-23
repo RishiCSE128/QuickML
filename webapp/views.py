@@ -166,7 +166,7 @@ def createModel():
 # Invoked when user selects algorithm 
 @views.route('/ProcessOption/<string:option>', methods=['POST'])
 def SaveOption(option):
-    # Loads the json string to a normal string
+    # Loads the json string to a normal s0.t1ring
     sel = json.loads(option)
     # Writes the users choice to a text file to
     # be kept for later reference.
@@ -187,7 +187,6 @@ def showModel():
 
 @views.route('/')
 def refresh():
-    y = name.split('/')[-1]
-    os.remove(y)
+    os.remove(name)
 
     return render_template('base.html')
