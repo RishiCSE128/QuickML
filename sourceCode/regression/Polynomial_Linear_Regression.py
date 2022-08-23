@@ -26,11 +26,10 @@ def polynomialLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     X_combined = np.r_[XTrain, XTest]
     Y_combined = np.r_[YTrain, YTest]
 
-    
+    # Manually casting to int 
     X_combined = np.array(X_combined, dtype='int')
     Y_combined = np.array(Y_combined, dtype='int')
 
-    # Might not be necessary... delete if deemed unworthy. 
     lin_reg = LinearRegression()
     lin_reg.fit(X_combined.reshape(-1,1), Y_combined)
 

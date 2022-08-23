@@ -21,8 +21,6 @@ def dataPreProcess(dataSet, varMap):
     with open('choice.txt') as f: 
         choice = f.read()
 
-    print(f'================= {choice}===============')
-
     data = pd.read_csv(
         os.path.join('../QuickML/sourceCode', filename))
 
