@@ -18,6 +18,7 @@ from sourceCode.classification import Support_Vector_Machine as SVM
 from sourceCode.classification import Kernel_SVM as KSVM
 from sourceCode.classification import Naive_Bayes as NB
 from sourceCode.classification import Decision_Tree_Classification as DTC
+from sourceCode.classification import Random_Forest_Classification as RFC
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -175,7 +176,8 @@ def createModel():
         name = NB.Naive_Bayes(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-CL-DTC':
         name = DTC.Decision_Tree_Classfication(X_test, X_train, Y_test, Y_train, filename)
-
+    if n == 'ML-CL-DTC':
+        name = DTC.Decision_Tree_Classfication(X_test, X_train, Y_test, Y_train, filename)
 
     return render_template('results.html')
 
