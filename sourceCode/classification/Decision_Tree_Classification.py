@@ -1,3 +1,4 @@
+from telnetlib import GA
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
@@ -18,16 +19,15 @@ from matplotlib.colors import ListedColormap
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.datasets import make_classification
 from sklearn.metrics import plot_confusion_matrix
-from sklearn.model_selection import train_test_split
-from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
 
-# Kernel-Support Vector Machine (SVM)
-def Kernel_Support_Vector_Machine(Xtest, Xtrain, Ytest, Ytrain, dataSet):
+# Decision Tree Classification
+def Decision_Tree_Classfication(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     '''
     Takes pre processed data and the dataSet which expects the algorithm
-    to be placed on its data. Performs Kernel-Support Vector Machine 
-    classification on the given dataset and returns a confusion matrix 
-    to display the accuracy and loss of the ML model. 
+    to be placed on its data. Performs Naive Bayes classification
+    on the given dataset and returns a confusion matrix to display the accuracy
+    and loss of the ML model. The classification is based on Bayes theoreum.
     '''
     
     # Formatting the dataSets for analysis
@@ -45,16 +45,21 @@ def Kernel_Support_Vector_Machine(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     YTrain = lab_enc.fit_transform(YTrain)
     YTest = lab_enc.fit_transform(YTest)
 
-    # Creating K-SVM Classifier with Gaussian Kernel
-    classifier = SVC(kernel='rbf', random_state=0)
+    # Creating Naive Bayes Classifier
+    classifier = GaussianNB()
 
-     # Fit Classifier on to Data 
+    # Fit classifier to training set
     classifier.fit(XTrain.reshape(-1,1), YTrain.reshape(-1,1))
 
+    YPred = classifier.predict(XTest.reshape(-1,1))
+
+    # Making the Confusion Matrix
+    cm = confusion_matrix(YTest, YPred)
+ 
     # Plotting the Confusion Matrix 
     plot_confusion_matrix(classifier, XTest.reshape(-1,1), YTest.reshape(-1,1))
 
-    plt.title(f'Kernel-Support Vector Classification for {dataSet}')
+    plt.title(f'Decision Tree Classification Classification for {dataSet}')
 
     plt.legend() 
     
