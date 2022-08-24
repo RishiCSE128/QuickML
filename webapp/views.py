@@ -13,10 +13,11 @@ from sourceCode.regression import Multiple_Linear_Regression as MLR
 from sourceCode.regression import Polynomial_Linear_Regression as PLR
 from sourceCode.regression import Support_Vector_Regression as SVR
 
-from sourceCode.classification import KNN 
+from sourceCode.classification import K_Nearest_Neighbours as KNN 
 from sourceCode.classification import Support_Vector_Machine as SVM
 from sourceCode.classification import Kernel_SVM as KSVM
 from sourceCode.classification import Naive_Bayes as NB
+from sourceCode.classification import Decision_Tree_Classification as DTC
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -172,6 +173,8 @@ def createModel():
         name = KSVM.Kernel_Support_Vector_Machine(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-CL-NB':
         name = NB.Naive_Bayes(X_test, X_train, Y_test, Y_train, filename)
+    if n == 'ML-CL-DTC':
+        name = DTC.Decision_Tree_Classfication(X_test, X_train, Y_test, Y_train, filename)
 
 
     return render_template('results.html')

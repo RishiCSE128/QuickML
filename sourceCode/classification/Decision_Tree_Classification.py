@@ -19,17 +19,17 @@ from matplotlib.colors import ListedColormap
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.datasets import make_classification
 from sklearn.metrics import plot_confusion_matrix
-from sklearn.naive_bayes import GaussianNB
+from sklearn.tree import DecisionTreeClassifier
 
 # Decision Tree Classification
 def Decision_Tree_Classfication(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     '''
     Takes pre processed data and the dataSet which expects the algorithm
-    to be placed on its data. Performs Naive Bayes classification
+    to be placed on its data. Performs Decision Tree classification
     on the given dataset and returns a confusion matrix to display the accuracy
-    and loss of the ML model. The classification is based on Bayes theoreum.
+    and loss of the ML model. 
     '''
-    
+
     # Formatting the dataSets for analysis
     XTrain = np.array(Xtrain[:,:].transpose()[1:,:].tolist()[0])
     XTest = np.array(Xtest[:,:].transpose()[1:,:].tolist()[0])
@@ -38,6 +38,7 @@ def Decision_Tree_Classfication(Xtest, Xtrain, Ytest, Ytrain, dataSet):
 
     # Manually casting to int using labelEncoder class to preserve
     # data integrity. (better than .astype('int'))
+
     lab_enc = preprocessing.LabelEncoder()
 
     XTrain = lab_enc.fit_transform(XTrain)
@@ -45,21 +46,16 @@ def Decision_Tree_Classfication(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     YTrain = lab_enc.fit_transform(YTrain)
     YTest = lab_enc.fit_transform(YTest)
 
-    # Creating Naive Bayes Classifier
-    classifier = GaussianNB()
+    # Creating a Decision Tree Classifer with a 0 random state
+    classifier = DecisionTreeClassifier(random_state=0)
 
-    # Fit classifier to training set
+     # Fit Classifier on to Data 
     classifier.fit(XTrain.reshape(-1,1), YTrain.reshape(-1,1))
 
-    YPred = classifier.predict(XTest.reshape(-1,1))
-
-    # Making the Confusion Matrix
-    cm = confusion_matrix(YTest, YPred)
- 
     # Plotting the Confusion Matrix 
     plot_confusion_matrix(classifier, XTest.reshape(-1,1), YTest.reshape(-1,1))
 
-    plt.title(f'Decision Tree Classification Classification for {dataSet}')
+    plt.title(f'Decision Tree Vector Classification for {dataSet}')
 
     plt.legend() 
     
