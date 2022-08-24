@@ -21,7 +21,7 @@ from sklearn.metrics import plot_confusion_matrix
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 
-# Support Vector Machine (SVM)
+# Kernel-Support Vector Machine (SVM)
 def Kernel_Support_Vector_Machine(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     '''
     Takes pre processed data and the dataSet which expects the algorithm

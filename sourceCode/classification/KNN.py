@@ -3,7 +3,6 @@ import pandas as pd
 import matplotlib as mpl
 import random
 from sklearn import preprocessing
-from sklearn import utils
 
 # Using TgAgg backend to make matplotlib thread safe
 mpl.use("TkAgg")
@@ -54,6 +53,7 @@ def K_Nearest_Neighbours(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     clf = SVC(random_state = 0)
     clf.fit(XTrain.reshape(-1,1), YTrain.reshape(-1,1))
 
+    # Plotting the Confusion Matrix 
     plot_confusion_matrix(clf, XTest.reshape(-1,1), YTest.reshape(-1,1))
 
     plt.title(f'K Nearest Neighbours Classification for {dataSet}')

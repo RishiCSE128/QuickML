@@ -3,8 +3,6 @@ body, html{
 	height:  100%;
 	margin:  0;
 }
-
-
 h1 {
 	color: white;
 	padding-left: 15px;
@@ -69,6 +67,7 @@ table, td, th{
   margin-left:  255px;
   cursor: pointer;
 }
+
 .collapsible {
   background-color: #eee;
   color: #444;
