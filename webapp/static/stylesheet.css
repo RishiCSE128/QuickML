@@ -49,27 +49,11 @@ table, td, th{
 	border-collapse:  seperate;
 	border-style: solid;
 }
-/* .leftpaneML{
-	width:  99.4%;
-	height: 52.3%;
-	float:  left;
-	background-color: darkcyan;
-	border-collapse: seperate;
-	border-style: solid;
-}
-.leftpaneDL {
-	width:  99.4%;
-	height: 32.3%;
-	float:  left;
-	background-color: darkcyan;
-	border-collapse: seperate;
-	border-style: solid;
-} */
 .rightpane{
 	width: 98.7%;
 	height: 30%;
 	float:  left;
-	background-color: #db7916;
+	background-color: #007bff80;
 	border-collapse: collapse;
 	border-style: solid;
 }
@@ -85,9 +69,6 @@ table, td, th{
   margin-left:  255px;
   cursor: pointer;
 }
-
-
-
 .collapsible {
   background-color: #eee;
   color: #444;
