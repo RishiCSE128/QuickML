@@ -14,6 +14,7 @@ from sourceCode.regression import Polynomial_Linear_Regression as PLR
 from sourceCode.regression import Support_Vector_Regression as SVR
 
 from sourceCode.classification import KNN 
+from sourceCode.classification import Support_Vector_Machine as SVM
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -155,7 +156,6 @@ def createModel():
     # Invoking the corresponding Algorithm 
     if n == 'ML-REG-MLR':
         name = MLR.multipleLinearRegression(X_test, X_train, Y_test, Y_train, filename)     
-
     if n == 'ML-REG-SLR':
         name = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train, filename) 
     if n == 'ML-REG-PLR':
@@ -164,7 +164,10 @@ def createModel():
         name = SVR.supportVectorRegression(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-CL-KNN':
         name = KNN.K_Nearest_Neighbours(X_test, X_train, Y_test, Y_train, filename)
-        
+    if n == 'ML-CL-SVM':
+        name = SVM.Support_Vector_Machine(X_test, X_train, Y_test, Y_train, filename)
+
+
     return render_template('results.html')
 
 # Invoked when user selects algorithm 
