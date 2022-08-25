@@ -20,6 +20,8 @@ from sourceCode.classification import Naive_Bayes as NB
 from sourceCode.classification import Decision_Tree_Classification as DTC
 from sourceCode.classification import Random_Forest_Classification as RFC
 
+from sourceCode.clustering import K_Means_Clustering as KMC
+
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
 views = Blueprint('base', __name__)
@@ -108,14 +110,6 @@ def dataPre():
     name = file.split('/')[-1]
     dF = pd.read_csv(
         os.path.join('../QuickML/sourceCode', name))
-    
-    # Columns still hard coded! Fix before deploying to production. 
-    col = dF.columns
-
-    Xtest = xTest.head()
-    Xtrain = xTrain.head()
-    Ytrain = yTrain.head()
-    Ytest = yTest.head()
 
     # returns formatted string which contains HTML and HTML tables using 
     # the 'tabulate' module
@@ -164,6 +158,8 @@ def createModel():
         n = f.read()
         
     # Invoking the corresponding Algorithm 
+
+    # Regression
     if n == 'ML-REG-MLR':
         name = MLR.multipleLinearRegression(X_test, X_train, Y_test, Y_train, filename)     
     if n == 'ML-REG-SLR':
@@ -172,6 +168,8 @@ def createModel():
         name = PLR.polynomialLinearRegression(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-REG-SVfR':
         name = SVR.supportVectorRegression(X_test, X_train, Y_test, Y_train, filename)
+
+    # Classification    
     if n == 'ML-CL-KNN':
         name = KNN.K_Nearest_Neighbours(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-CL-SVM':
@@ -185,6 +183,10 @@ def createModel():
     if n == 'ML-CL-RFC':
         name = RFC.Random_Forest_Classfication(X_test, X_train, Y_test, Y_train, filename)
 
+    # Clustering
+    if n == 'ML-CLU-KM':
+        name = KMC.kMeansClustering(X_test, X_train, Y_test, Y_train, filename)
+        
     return render_template('results.html')
 
 # Invoked when user selects algorithm 
