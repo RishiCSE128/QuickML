@@ -92,6 +92,8 @@ function makeVarMap() {
   }).done(function (result) {
     var div = document.createElement("div");
 
+    div.classList.add='col-md-8';
+    div.style.float='right'
     div.style.width = "80%";
     div.style.height = "90%";
     div.style.background = "#e66a22";

@@ -48,9 +48,7 @@ table, td, th{
 	border-style: solid;
 }
 .rightpane{
-	width: 98.7%;
 	height: 30%;
-	float:  left;
 	background-color: #007bff80;
 	border-collapse: collapse;
 	border-style: solid;

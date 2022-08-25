@@ -24,11 +24,11 @@
 
         <table id="data" class="table">
             <tr>
-                <th scope ='col'></th>
-                <th scope ='col'>Independent</th>
-                <th scope ='col'>Dependent</th>
-                <th scope ='col'>Categorical</th>
-                <th scope ='col'>Ignore</th>
+                <th scope='col'></th>
+                <th scope='col'>Independent</th>
+                <th scope='col'>Dependent</th>
+                <th scope='col'>Categorical</th>
+                <th scope='col'>Ignore</th>
             </tr>
             <div>
                 {% for i in attributes: %}
@@ -48,15 +48,13 @@
     </div>
 
 </div>
-{% endblock %}
-
-
-
-{% block leftcontent%}
 <form method="POST" action="/Results">
-    <div id='main'>
+    <div class="row">
+        <div class="col-md-8">
+            <div id='main'>
+            </div>
+            <p><input class="btn" id="Xar" type="submit" value="Submit" style="display:none"></p>
+        </div>
     </div>
-    <p><input class="btn" id="Xar" type="submit" value="Submit" style="display:none"></p>
 </form>
-
 {% endblock %}

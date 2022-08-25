@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<div clas="container">
+	<div>
 		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 			<a class="navbar-brand" href="/">QuickML</a>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -19,171 +19,180 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 		</nav>
+		<div class="row row-no-gutters">
+			<div class="col-md-4">
+				<!--============================ LEFT CONTAINER ============================ -->
 
-		<!--============================ LEFT CONTAINER ============================ -->
+				{% block leftcontent %}
 
-		{% block leftcontent %}
-
-
-
-
-		<div class="container-fluid">
-			<h1 class="display-4">Select Algorithm</h1>
-		</div>
-
-
-
-		<button class="btn btn-primary" data-toggle="collapse" href=".learning" aria-expanded="false"
-			style="margin:20px 0px 0px 30px">
-			Machine Learning
-		</button>
-		<!-- ML SUP LEARNING -->
-		<div class="learning collapse hide">
-			<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1" aria-expanded="false"
-				aria-controls="collapseOne" style="margin:30px 0px 5px 45px">
-				Supervised Learning
-			</button>
-		</div>
-
-		<!-- REGRESSION  -->
-		<div class="card-header1 collapse hide" id="headingOne">
-			<h5 class="mb-0">
-				<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseOne"
-					aria-expanded="false" aria-controls="collapseOne" style="margin:20px 3px 3px 70px">
-					Regression Algorithms
-				</button>
-			</h5>
-		</div>
-
-		<div id="collapseOne" class="collapse hide" data-parent="#accordion">
-			<div class="card card-body">
-				<ul style="margin-left:40px">
-					<li><button onclick="showDiv()" class="btn choice" value="ML-REG-SLR">Simple Linear
-							Regression</button></li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-REG-MLR">Multiple
-							Linear
-							Regression</button></li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-REG-PLR">Polynomial
-							Linear
-							Regression</button></li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-REG-SVfR">Support
-							Vector
-							Regression</button>
-					<li>
-				</ul>
-			</div>
-		</div>
-		<!-- CLASSIFICATION -->
-		<div class="card-header1 collapse hide" id="headingTwo">
-			<h5 class="mb-0">
-				<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo"
-					aria-expanded="false" aria-controls="collapseTwo" style="margin:7px 3px 20px 70px">
-					Classification Algorithms
-				</button>
-			</h5>
-		</div>
-		<div id="collapseTwo" class="collapse" data-parent="#accordion">
-			<div class="card-body">
-				<ul style="margin-left:40px">
-					<li><button onclick="showDiv()" class="btn choice" value="ML-CL-KNN">K-Nearest
-							Neighbors</button></li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-CL-SVM">Support Vector
-							Machine</button></li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-CL-KSVM">Kernel
-							Support
-							Vector
-							Machine</button></li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-CL-NB">Naive
-							Bayes</button>
-					</li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-CL-DTC">Decision Tree
-							Classification</button></li>
-					<li><button onclick="showDiv()" class="btn choice" value="ML-CL-RFC">Random Forest
-							Classification</button></li>
-				</ul>
-			</div>
-		</div>
-		<!-- UNSUPERVISED LEARNING -->
-		<div class="learning collapse hide">
-			<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header2" aria-expanded="false"
-				aria-controls="collapseOne" style="margin:10px 0px 5px 45px">
-				Unsupervised Learning
-			</button>
-		</div>
-		<div class="card-header2 collapse hide" id="headingTwo">
-			<h5 class="mb-0">
-				<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo"
-					aria-expanded="false" aria-controls="collapseTwo" style="margin:20px 3px 3px 70px">
-					Clustering Algorithms
-				</button>
-			</h5>
-		</div>
-
-
-
-
-		<!-- <h3>Deep Learning Algorithms</h3> -->
-		<div class="container-fluid">
-			<div id="accordion" style='width:33%'>
-
-				<div class="card-headerDL" id="headingThree">
-					<h5 class="mb-0">
-						<button class="btn btn-primary" data-toggle="collapse" href=".learning1" aria-expanded="false"
-							aria-controls="collapseOne" style="margin:20px 0px 0px 15px">
-							Deep Learning Algorithms
-						</button>
-					</h5>
+				<div class="container">
+					<h1 class="display-4">Select Algorithm</h1>
 				</div>
 
-				<div class="learning1 collapse hide">
+
+				<button class="btn btn-primary" data-toggle="collapse" href=".learning" aria-expanded="false"
+					style="margin:20px 0px 0px 30px">
+					Machine Learning
+				</button>
+				<!-- ML SUP LEARNING -->
+				<div class="learning collapse hide">
 					<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1"
-						aria-expanded="false" aria-controls="collapseOne" style="margin:30px 0px 5px 25px">
+						aria-expanded="false" aria-controls="collapseOne" style="margin:30px 0px 5px 45px">
 						Supervised Learning
 					</button>
 				</div>
 
-				<div id="collapseThree" class="collapse hide" data-parent="#accordion">
+				<!-- REGRESSION  -->
+				<div class="card-header1 collapse hide" id="headingOne">
+					<h5 class="mb-0">
+						<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseOne"
+							aria-expanded="false" aria-controls="collapseOne" style="margin:20px 3px 3px 70px">
+							Regression Algorithms
+						</button>
+					</h5>
+				</div>
+
+				<div id="collapseOne" class="collapse hide" data-parent="#accordion">
 					<div class="card-body">
-						<ul>
-							<li><button onclick="showDiv()" class="btn choice" value="ANN">ANN</button></li>
-							<li><button onclick="showDiv()" class="btn choice" value="CNN">CNN</button></li>
-							<li><button onclick="showDiv()" class="btn choice" value="RNN">RNN</button></li>
-							<li><button onclick="showDiv()" class="btn choice" value="SOM">SOM</button></li>
-							<li><button onclick="showDiv()" class="btn choice" value="RBM">RBM</button></li>
-							<li><button onclick="showDiv()" class="btn choice" value="AE">AE</button></li>
+						<ul style="margin-left:40px">
+							<li><button onclick="showDiv()" class="btn choice" value="ML-REG-SLR">Simple Linear
+									Regression</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-REG-MLR">Multiple
+									Linear
+									Regression</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-REG-PLR">Polynomial
+									Linear
+									Regression</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-REG-SVfR">Support
+									Vector
+									Regression</button>
+							<li>
+						</ul>
+					</div>
+				</div>
+				<!-- CLASSIFICATION -->
+				<div class="card-header1 collapse hide" id="headingTwo">
+					<h5 class="mb-0">
+						<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseTwo"
+							aria-expanded="false" aria-controls="collapseTwo" style="margin:7px 3px 20px 70px">
+							Classification Algorithms
+						</button>
+					</h5>
+				</div>
+				<div id="collapseTwo" class="collapse hide" data-parent="#accordion">
+					<div class="card-body">
+						<ul style="margin-left:40px">
+							<li><button onclick="showDiv()" class="btn choice" value="ML-CL-KNN">K-Nearest
+									Neighbors</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-CL-SVM">Support Vector
+									Machine</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-CL-KSVM">Kernel
+									Support
+									Vector
+									Machine</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-CL-NB">Naive
+									Bayes</button>
+							</li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-CL-DTC">Decision Tree
+									Classification</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-CL-RFC">Random Forest
+									Classification</button></li>
+						</ul>
+					</div>
+				</div>
+				<!-- UNSUPERVISED LEARNING -->
+				<div class="learning collapse hide">
+					<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header2"
+						aria-expanded="false" aria-controls="collapseOne" style="margin:10px 0px 5px 45px">
+						Unsupervised Learning
+					</button>
+				</div>
+				<div class="card-header2 collapse hide" id="headingTwo">
+					<h5 class="mb-0">
+						<button class="btn btn-primary collapsed" data-toggle="collapse" data-target="#collapseFour"
+							aria-expanded="false" aria-controls="collapseFour" style="margin:20px 3px 3px 70px">
+							Clustering Algorithms
+						</button>
+					</h5>
+				</div>
+				<div id="collapseFour" class="collapse" data-parent="#accordion">
+					<div class="card-body">
+						<ul style="margin-left:40px">
+							<li><button onclick="showDiv()" class="btn choice" 0 value="ML-CLU-KM">K-Means
+									Clustering</button></li>
+							<li><button onclick="showDiv()" class="btn choice" value="ML-CL-SVM">Hierarchical
+									Clustering</button></li>
 						</ul>
 					</div>
 				</div>
 
-				<div class="learning1 collapse hide">
-					<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1"
-						aria-expanded="false" aria-controls="collapseOne" style="margin:10px 0px 5px 25px">
-						Unsupervised Learning
-					</button>
+
+
+
+				<!-- <h3>Deep Learning Algorithms</h3> -->
+				<div class="container-fluid">
+					<div id="accordion" style='width:33%'>
+
+						<div class="card-headerDL" id="headingThree">
+							<h5 class="mb-0">
+								<button class="btn btn-primary" data-toggle="collapse" href=".learning1"
+									aria-expanded="false" aria-controls="collapseOne" style="margin:20px 0px 0px 15px">
+									Deep Learning Algorithms
+								</button>
+							</h5>
+						</div>
+
+						<div class="learning1 collapse hide">
+							<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1"
+								aria-expanded="false" aria-controls="collapseOne" style="margin:30px 0px 5px 25px">
+								Supervised Learning
+							</button>
+						</div>
+
+						<div id="collapseThree" class="collapse hide" data-parent="#accordion">
+							<div class="card-body">
+								<ul>
+									<li><button onclick="showDiv()" class="btn choice" value="ANN">ANN</button></li>
+									<li><button onclick="showDiv()" class="btn choice" value="CNN">CNN</button></li>
+									<li><button onclick="showDiv()" class="btn choice" value="RNN">RNN</button></li>
+									<li><button onclick="showDiv()" class="btn choice" value="SOM">SOM</button></li>
+									<li><button onclick="showDiv()" class="btn choice" value="RBM">RBM</button></li>
+									<li><button onclick="showDiv()" class="btn choice" value="AE">AE</button></li>
+								</ul>
+							</div>
+						</div>
+
+						<div class="learning1 collapse hide">
+							<button class="btn btn-primary collapsed" data-toggle="collapse" href=".card-header1"
+								aria-expanded="false" aria-controls="collapseOne" style="margin:10px 0px 5px 25px">
+								Unsupervised Learning
+							</button>
+						</div>
+					</div>
 				</div>
-
 			</div>
-		</div>
-	</div>
-	</div>
 
 
 
-	{% endblock %}
+			{% endblock %}
 
 
-	<!--============================ RIGHT CONTAINER ============================ -->
-	{% block rightcontent %}
+			<!--============================ RIGHT CONTAINER ============================ -->
+			{% block rightcontent %}
 
-	<div class="container-fluid" width="50%">
-		<div class="rightpane" style="display:none" id="appear1">
-			<h3> Input Data </h3>
+			<div class="container" style="width:100%">
+				<div class="rightpane" style="display:none" id="appear1">
+					<div class="col-md-8">
+						<h3> Input Data </h3>
 
-			<!-- File upload -->
-			<form method="POST"  action="/" enctype="multipart/form-data">
-				<p><input type="file" name="file"></p>
-				<p><input type="submit" value="Submit"></p>
-			</form>
+						<!-- File upload -->
+						<form method="POST" action="/" enctype="multipart/form-data">
+							<p><input type="file" name="file"></p>
+							<p><input type="submit" value="Submit"></p>
+						</form>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 

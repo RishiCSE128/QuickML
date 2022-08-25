@@ -50,7 +50,9 @@ def upload_file():
 
     # Saves the file so it can be accessed later on.
     dataSet = pd.read_csv(file)
+    # Resets file pointer after reading from CSV 
     file.seek(0)
+    # Saves the file 
     file.save(os.path.join(UPLOAD_FOLDER, file.filename))
     filename = file.filename
 
@@ -110,6 +112,11 @@ def dataPre():
     # Columns still hard coded! Fix before deploying to production. 
     col = dF.columns
 
+    Xtest = xTest.head()
+    Xtrain = xTrain.head()
+    Ytrain = yTrain.head()
+    Ytest = yTest.head()
+
     # returns formatted string which contains HTML and HTML tables using 
     # the 'tabulate' module
     return (f'''
@@ -121,15 +128,15 @@ def dataPre():
                     <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
                 
                 <div id="trainset" class="container list" style="display:flex; width=60%">
-                    {tabulate(table['X_train'], tablefmt='html')}
-                    {tabulate(table['y_train'], tablefmt='html')}
+                    {tabulate(pd.DataFrame(table['X_train']).head(), tablefmt='html')}
+                    {tabulate(pd.DataFrame(table['y_train']).head(), tablefmt='html')}
                 </div>
                 <hr>
                 <h3 style="text-align:left"> X test </h3> 
                 <h3 style="text-align:right; margin-top:-40px"> Y test </h3> <hr><br>
                 <div class="container" style="display:flex; width=60%">
-                    {tabulate(table['X_test'], tablefmt='html')}
-                    {tabulate(table['y_test'], tablefmt='html')}
+                    {tabulate(pd.DataFrame(table['X_test']).head(), tablefmt='html')}
+                    {tabulate(pd.DataFrame(table['y_test']).head(), tablefmt='html')}
                 </div>
             </div>  
     ''' )
@@ -176,8 +183,8 @@ def createModel():
         name = NB.Naive_Bayes(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-CL-DTC':
         name = DTC.Decision_Tree_Classfication(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-CL-DTC':
-        name = DTC.Decision_Tree_Classfication(X_test, X_train, Y_test, Y_train, filename)
+    if n == 'ML-CL-RFC':
+        name = RFC.RandomForestClassifier(X_test, X_train, Y_test, Y_train, filename)
 
     return render_template('results.html')
 
