@@ -1,13 +1,13 @@
+import matplotlib as mpl
+
+mpl.use("Agg")
+
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.linear_model import LinearRegression
 import random
-
-# Using TgAgg backend to make matplotlib thread safe
-mpl.use("TkAgg")
-
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression    
 from sklearn.svm import SVR

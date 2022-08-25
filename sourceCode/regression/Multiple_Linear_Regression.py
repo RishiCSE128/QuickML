@@ -1,13 +1,11 @@
+import matplotlib as mpl
+
+mpl.use("Agg")
+
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import random
-
-# Using TgAgg backend to make matplotlib thread safe
-mpl.use("TkAgg")
-
-# import statsmodels.formula.api 
-
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 

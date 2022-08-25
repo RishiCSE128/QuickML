@@ -1,18 +1,16 @@
+import matplotlib as mpl
+
+mpl.use("Agg")
+
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
 import random
 from sklearn import preprocessing
-
-# Using TgAgg backend to make matplotlib thread safe
-mpl.use("TkAgg")
-
-# import statsmodels.formula.api 
-
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 from sklearn.linear_model import LogisticRegression
-# Importing confusion_matrix function
+
 from sklearn.metrics import confusion_matrix
 from matplotlib.colors import ListedColormap
 from sklearn.neighbors import KNeighborsClassifier

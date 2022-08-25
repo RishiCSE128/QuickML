@@ -188,8 +188,9 @@ def createModel():
     if n == 'ML-CLU-KM':
         name = KMC.kMeansClustering(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-CLU-HC':
-        name == HC.hierarchicalClustering(X_test, X_train, Y_test, Y_train, filename)
-    return render_template('results.html')
+        name = HC.hierarchicalClustering(X_test, X_train, Y_test, Y_train, filename)
+
+    return render_template('results.html', x = name)
 
 # Invoked when user selects algorithm 
 @views.route('/ProcessOption/<string:option>', methods=['POST'])

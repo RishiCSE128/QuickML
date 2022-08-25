@@ -1,9 +1,10 @@
+import matplotlib as mpl
+
+mpl.use("Agg")
+
 import numpy as np
 import pandas as pd
 import matplotlib as mpl
-
-mpl.use("TkAgg")
-
 import matplotlib.pyplot as plt
 from sklearn.cluster import KMeans
 import random
@@ -17,6 +18,8 @@ def kMeansClustering(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     YTrain = Ytrain[:,:].transpose()[1:,:].tolist()[0]
     YTest = Ytest[:,:].transpose()[1:,:].tolist()[0]
 
+
+    mpl.rcParams['figure.figsize'] = [5, 5]
 
     X_combined = np.r_[XTrain, XTest]
     Y_combined = np.r_[YTrain, YTest]
