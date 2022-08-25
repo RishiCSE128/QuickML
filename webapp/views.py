@@ -21,6 +21,7 @@ from sourceCode.classification import Decision_Tree_Classification as DTC
 from sourceCode.classification import Random_Forest_Classification as RFC
 
 from sourceCode.clustering import K_Means_Clustering as KMC
+from sourceCode.clustering import Hierarchical_Clustering as HC
 
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
@@ -186,7 +187,8 @@ def createModel():
     # Clustering
     if n == 'ML-CLU-KM':
         name = KMC.kMeansClustering(X_test, X_train, Y_test, Y_train, filename)
-        
+    if n == 'ML-CLU-HC':
+        name == HC.hierarchicalClustering(X_test, X_train, Y_test, Y_train, filename)
     return render_template('results.html')
 
 # Invoked when user selects algorithm 
