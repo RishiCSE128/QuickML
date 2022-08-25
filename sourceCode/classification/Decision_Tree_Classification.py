@@ -53,7 +53,7 @@ def Decision_Tree_Classfication(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     # Plotting the Confusion Matrix 
     plot_confusion_matrix(classifier, XTest.reshape(-1,1), YTest.reshape(-1,1))
 
-    plt.title(f'Decision Tree Vector Classification for {dataSet}')
+    plt.title(f'Decision Tree Classification for {dataSet}')
 
     plt.legend() 
     
