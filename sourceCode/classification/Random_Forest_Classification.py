@@ -19,7 +19,7 @@ from matplotlib.colors import ListedColormap
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.datasets import make_classification
 from sklearn.metrics import plot_confusion_matrix
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 # Random Forst Classification
 def Random_Forest_Classfication(Xtest, Xtrain, Ytest, Ytrain, dataSet):
@@ -47,7 +47,7 @@ def Random_Forest_Classfication(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     YTest = lab_enc.fit_transform(YTest)
 
     # Creating a Decision Tree Classifer with a 0 random state
-    classifier = DecisionTreeClassifier(random_state=0)
+    classifier = RandomForestClassifier(random_state=0)
 
      # Fit Classifier on to Data 
     classifier.fit(XTrain.reshape(-1,1), YTrain.reshape(-1,1))

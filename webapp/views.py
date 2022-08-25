@@ -123,8 +123,7 @@ def dataPre():
             <h2 style="text-align:center">Scroll to Preview your Pre-Processed Data!</h2>
             <hr>
             <div>
-                    <h3 style="text-align:left" class="btn btn-primary" data-toggle="collapse"
-                     href=".container list"> X train </h3> 
+                    <h3 style="text-align:left"> X train </h3> 
                     <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
                 
                 <div id="trainset" class="container list" style="display:flex; width=60%">
@@ -184,7 +183,7 @@ def createModel():
     if n == 'ML-CL-DTC':
         name = DTC.Decision_Tree_Classfication(X_test, X_train, Y_test, Y_train, filename)
     if n == 'ML-CL-RFC':
-        name = RFC.RandomForestClassifier(X_test, X_train, Y_test, Y_train, filename)
+        name = RFC.Random_Forest_Classfication(X_test, X_train, Y_test, Y_train, filename)
 
     return render_template('results.html')
 

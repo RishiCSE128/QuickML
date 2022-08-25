@@ -92,17 +92,14 @@ function makeVarMap() {
   }).done(function (result) {
     var div = document.createElement("div");
 
-    div.classList.add='col-md-8';
-    div.style.float='right'
-    div.style.width = "80%";
-    div.style.height = "90%";
-    div.style.background = "#e66a22";
+    div.style.width = "100%";
+    div.style.background = "#3289a8";
     div.style.color = "black";
     div.innerHTML = result;
     div.style.margin = "auto";
 
     document.getElementById("main").appendChild(div);
-    document.getElementById('preProcessedData').style.display = "none";
+    //document.getElementById('preProcessedData').style.display = "none";
     document.getElementById('Xar').style.display = "block";
   })
 }
