@@ -16,6 +16,7 @@ for (i = 0; i < coll.length; i++) {
 
 function showDiv() {
   document.getElementById('appear1').style.display = "block";
+  document.getElementById('appear0').style.display = "block";
 }
 
 document.querySelectorAll('.choice').forEach(item => {
