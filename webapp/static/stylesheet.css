@@ -2,6 +2,7 @@ body, html{
 	width: 100%;
 	height:  100%;
 	margin:  0;
+	background-color: #1A2332;
 }
 h1 {
 	color: white;
@@ -90,15 +91,4 @@ table, td, th{
 
 .rd{
 	margin-left: 40px;
-}
-
-.choice {
-	
-}
-#appear1 {
-
-}
-
-#appear0 {
-	
 }
