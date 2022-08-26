@@ -117,7 +117,7 @@ def dataPre():
     return (f'''
             <h2 style="text-align:center">Scroll to Preview your Pre-Processed Data!</h2>
             <hr>
-            <div>
+            <div class="col-md-8">
                     <h3 style="text-align:left"> X train </h3> 
                     <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
                 

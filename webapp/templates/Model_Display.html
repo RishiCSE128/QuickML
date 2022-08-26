@@ -6,10 +6,12 @@
 <!-- Algorithm Selection in Base -->
 
 <div>
-    <img src ="{{url_for('static', filename=x)}}">
-
-    <form action = "{{url_for('base.refresh')}}">
-        <input type = 'submit' value = 'REFRESH'></a>
+    <a href="{{url_for('static', filename=x)}}" download>
+        <img src="{{url_for('static', filename=x)}}">
+    </a>
+    
+    <form action="{{url_for('base.refresh')}}">
+        <input type='submit' value='REFRESH'></a>
     </form>
 </div>
 
@@ -17,6 +19,6 @@
 {% endblock %}
 
 
-{% block leftcontent %} 
+{% block leftcontent %}
 
 {% endblock %}
