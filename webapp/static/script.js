@@ -47,6 +47,12 @@ function isChecked(x) {
 }
 
 
+$('.choice').click(function () {
+  $('#appear1').toggle('slow', function () {
+  
+  });
+});
+
 function makeVarMap() {
 
   const radioButtons = document.querySelectorAll('.rd');  // All radio buttons
