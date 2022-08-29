@@ -49,8 +49,12 @@ function isChecked(x) {
 
 $('.choice').click(function () {
   $('#appear1').toggle('slow', function () {
-  
+
   });
+});
+
+$('#fade').toggle('slow', function () {
+
 });
 
 function makeVarMap() {
