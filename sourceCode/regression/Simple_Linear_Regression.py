@@ -7,6 +7,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from sklearn.linear_model import LinearRegression
 import random
+# import dash
+# import dash_core_components as DCC 
+# import dash_html_components as HTML 
 
 
 # SIMPLE LINEAR REGRESSION
