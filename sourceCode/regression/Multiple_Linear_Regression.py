@@ -78,4 +78,5 @@ def multipleLinearRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     # created and saved 
     plt.clf()
 
+
     return x

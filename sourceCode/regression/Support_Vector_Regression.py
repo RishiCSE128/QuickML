@@ -62,4 +62,8 @@ def supportVectorRegression(Xtest, Xtrain, Ytest, Ytrain, dataSet):
 
     x = f'../QuickML/webapp/static/{filename}.jpg'
 
+    # clears the mat plot lib cache so other figures can be 
+    # created and saved 
+    plt.clf()
+
     return x

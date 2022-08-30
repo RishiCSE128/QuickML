@@ -57,14 +57,14 @@ def K_Nearest_Neighbours(Xtest, Xtrain, Ytest, Ytrain, dataSet):
     plt.title(f'K Nearest Neighbours Classification for {dataSet}')
 
     plt.legend() 
-
-    # plt.matshow(dcm)
-
-
-            
+  
     filename = f'{random.randint(100,999)}'
     plt.savefig(f'../QuickML/webapp/static/{filename}.jpg')
 
     x = f'../QuickML/webapp/static/{filename}.jpg'
+
+    # clears the mat plot lib cache so other figures can be 
+    # created and saved 
+    plt.clf()
 
     return x
