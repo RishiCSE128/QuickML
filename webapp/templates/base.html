@@ -11,18 +11,19 @@
 </head>
 
 <body>
-	<div>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-			<a class="navbar-brand" href="/">QuickML</a>
-			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-				aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-		</nav>
+	<!-- NAVIGATION BAR  -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<a class="navbar-brand" href="/">QuickML</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+	</nav>
+
+	<!--============================ LEFT CONTAINER ============================ -->
+	<div class="container-fluid">
 		<div class="row row-no-gutters">
 			<div class="col-md-4">
-				<!--============================ LEFT CONTAINER ============================ -->
-
 				{% block leftcontent %}
 
 				<div class="container">
@@ -173,32 +174,31 @@
 			</div>
 
 
-
 			{% endblock %}
 
 
 			<!--============================ RIGHT CONTAINER ============================ -->
 			{% block rightcontent %}
-			<div class="container" style="width:100%">
-				<button id='appear0' style="display:none" class="btn btn-dark" 
-							data-toggle="collapse" href=".vk"
-							aria-expanded="true" aria-controls="vk" 
-							style="margin:20px 0px 0px 15px"> Input Data</button>
+
+			<div class="col-md-8">
+				<button id='appear0' style="display:none" class="btn btn-dark" data-toggle="collapse" href=".vk"
+					aria-expanded="true" aria-controls="vk" style="margin:20px 0px 0px 15px"> Input Data</button>
 
 				<div class="rightpane vk collapse hide" style="display:none" id="appear1">
-					<div class="col-md-8">
-						<h3> Input Data </h3>
 
-						<!-- File upload -->
-						<form method="POST" action="/" enctype="multipart/form-data">
-							<p><input type="file" name="file"></p>
-							<p><input type="submit" value="Submit"></p>
-						</form>
-					</div>
+					<h3> Input Data </h3>
+
+					<!-- File upload -->
+					<form method="POST" action="/" enctype="multipart/form-data">
+						<p><input type="file" name="file"></p>
+						<p><input type="submit" value="Submit"></p>
+					</form>
 				</div>
+
 			</div>
 		</div>
 	</div>
+
 
 	{% endblock %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

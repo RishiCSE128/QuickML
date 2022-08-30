@@ -53,6 +53,7 @@ $('.choice').click(function () {
   });
 });
 
+
 function makeVarMap() {
 
   const radioButtons = document.querySelectorAll('.rd');  // All radio buttons
