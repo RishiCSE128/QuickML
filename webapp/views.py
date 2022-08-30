@@ -216,6 +216,6 @@ def showModel():
 
 @views.route('/')
 def refresh():
-    os.remove(name)
+    os.remove(f'{name}.jpg')
 
     return render_template('base.html')
