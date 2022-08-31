@@ -43,13 +43,17 @@
             </div>
         </table>
 
-        <button class="btn btn-dark" onclick="makeVarMap()">Submit</button>
-
+        <button class="btn btn-dark" 
+                onclick="makeVarMap()" 
+                data-toggle="collapse" 
+                href="#data" 
+                aria-expanded="false">Submit</button>
     </div>
-
 </div>
+
 <div class="container-fluid float right">
     <div class="row">
+        <div class="col-md-4"></div>
         <div class="col-md-8">
             <form method="POST" action="/Results">
                 <div id='main'>

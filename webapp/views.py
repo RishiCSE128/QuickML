@@ -117,15 +117,15 @@ def dataPre():
     return (f'''
             <h2 style="text-align:center">Scroll to Preview your Pre-Processed Data!</h2>
             <hr>
-            <div class="col-md-8">
+            <div>
                     <h3 style="text-align:left"> X train </h3> 
-                    <h3 style="text-align:right; margin-top:-40px"> Y train </h3> <hr><br>
+                    <h3 style="text-align:right"> Y train </h3> <hr><br>
                 
                 <div id="trainset" class="container list" style="display:flex; width=60%">
                     {tabulate(pd.DataFrame(table['X_train']).head(), tablefmt='html')}
                     {tabulate(pd.DataFrame(table['y_train']).head(), tablefmt='html')}
                 </div>
-                <hr>
+                    <hr>
                 <h3 style="text-align:left"> X test </h3> 
                 <h3 style="text-align:right; margin-top:-40px"> Y test </h3> <hr><br>
                 <div class="container" style="display:flex; width=60%">
@@ -217,5 +217,7 @@ def showModel():
 @views.route('/')
 def refresh():
     os.remove(f'{name}.jpg')
+
+    print(name)
 
     return render_template('base.html')

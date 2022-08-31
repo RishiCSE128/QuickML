@@ -99,15 +99,13 @@ function makeVarMap() {
     data: JSON.stringify(s)
   }).done(function (result) {
     var div = document.createElement("div");
-
+    
     div.style.width = "100%";
-    div.style.background = "#3289a8";
-    div.style.color = "black";
+    div.style.background = "#007bff80";
     div.innerHTML = result;
     div.style.margin = "auto";
 
     document.getElementById("main").appendChild(div);
-    //document.getElementById('preProcessedData').style.display = "none";
     document.getElementById('Xar').style.display = "block";
   })
 }
