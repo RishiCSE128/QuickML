@@ -23,6 +23,8 @@ from sourceCode.classification import Random_Forest_Classification as RFC
 from sourceCode.clustering import K_Means_Clustering as KMC
 from sourceCode.clustering import Hierarchical_Clustering as HC
 
+from sourceCode.deep_learning import ANN
+
 # Defining 'views' blueprint. 
 # It is registered in webapp/__init__.py
 views = Blueprint('base', __name__)
@@ -154,7 +156,7 @@ def createModel():
     os.remove(f'sourceCode/{filename}')
 
     global name 
-    # Obtaining the choice the user makes & writing to 
+    # Obtaining the choice the user makes & reading it
     with open('choice.txt') as f:
         n = f.read()
         
@@ -190,12 +192,18 @@ def createModel():
     if n == 'ML-CLU-HC':
         name = HC.hierarchicalClustering(X_test, X_train, Y_test, Y_train, filename)
 
+    # Deep Learning 
+    if n == 'ANN':
+        name = ANN.Artficial_Neural_Network(X_test, X_train, Y_test, Y_train, filename)
+
     return render_template('results.html', x = name)
+
+
 
 # Invoked when user selects algorithm 
 @views.route('/ProcessOption/<string:option>', methods=['POST'])
 def SaveOption(option):
-    # Loads the json string to a normal s0.t1ring
+    # Loads the json string to a normal string
     sel = json.loads(option)
     # Writes the users choice to a text file to
     # be kept for later reference.
