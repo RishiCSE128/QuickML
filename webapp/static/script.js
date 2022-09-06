@@ -53,7 +53,22 @@ $('.choice').click(function () {
   });
 });
 
+function makeDNN_Arch(){
+  const options = document.querySelectorAll('.selected');  // All user choices
 
+  var Dnn_Arch = {
+    'Layers' : [],
+    'Optimization Function': [],
+    'Loss Function': [],
+    'Batch Size': [],
+    'Epoch': []
+  }
+
+  
+}
+
+
+// Makes the variable mapping to be passed into data pre-processing function
 function makeVarMap() {
 
   const radioButtons = document.querySelectorAll('.rd');  // All radio buttons
@@ -85,19 +100,20 @@ function makeVarMap() {
       j++;
     }
     if (radioButtons[x].checked && radioButtons[x].value == 'Cat') {
-      j--;
+      j--;  // Categorical is always also dependent or independent
       varMap['Categorical'].push(head[j]);
-      j++;
+      j++; // decrements j before the logic, so it targets the correct block
     }
   }
   s = JSON.stringify(varMap)
-
+  // Convert to JSON so it can be send
+  // Sent with asonchronous javascript 
   $.ajax({
     url: '/dataPreProcessing',
     type: "POST",
     contentType: "application/json",
     data: JSON.stringify(s)
-  }).done(function (result) {
+  }).done(function (result) {     // When function returns append data to div in DOM
     var div = document.createElement("div");
     
     div.style.width = "100%";
