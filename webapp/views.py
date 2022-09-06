@@ -174,35 +174,35 @@ def createModel():
     # Regression
     if n == 'ML-REG-MLR':
         name = MLR.multipleLinearRegression(X_test, X_train, Y_test, Y_train, filename)     
-    if n == 'ML-REG-SLR':
+    elif n == 'ML-REG-SLR':
         name = SLR.simpleLinearRegression(X_test, X_train, Y_test, Y_train, filename) 
-    if n == 'ML-REG-PLR':
+    elif n == 'ML-REG-PLR':
         name = PLR.polynomialLinearRegression(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-REG-SVfR':
+    elif n == 'ML-REG-SVfR':
         name = SVR.supportVectorRegression(X_test, X_train, Y_test, Y_train, filename)
 
     # Classification    
-    if n == 'ML-CL-KNN':
+    elif n == 'ML-CL-KNN':
         name = KNN.K_Nearest_Neighbours(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-CL-SVM':
+    elif n == 'ML-CL-SVM':
         name = SVM.Support_Vector_Machine(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-CL-KSVM':
+    elif n == 'ML-CL-KSVM':
         name = KSVM.Kernel_Support_Vector_Machine(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-CL-NB':
+    elif n == 'ML-CL-NB':
         name = NB.Naive_Bayes(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-CL-DTC':
+    elif n == 'ML-CL-DTC':
         name = DTC.Decision_Tree_Classfication(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-CL-RFC':
+    elif n == 'ML-CL-RFC':
         name = RFC.Random_Forest_Classfication(X_test, X_train, Y_test, Y_train, filename)
 
     # Clustering
-    if n == 'ML-CLU-KM':
+    elif n == 'ML-CLU-KM':
         name = KMC.kMeansClustering(X_test, X_train, Y_test, Y_train, filename)
-    if n == 'ML-CLU-HC':
+    elif n == 'ML-CLU-HC':
         name = HC.hierarchicalClustering(X_test, X_train, Y_test, Y_train, filename)
 
     # Deep Learning 
-    if n[:2] == 'DL':
+    elif n[:2] == 'DL':
         return render_template('DL_options.html')
 
 

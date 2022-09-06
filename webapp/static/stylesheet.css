@@ -30,6 +30,32 @@ table, td, th{
 	background-color: darkcyan;
 	border-style: solid;
 }
+
+/* Add this class to a div dynamically */
+
+.grayscaleblur {
+	filter: blur(3px) grayscale(100%);
+}
+
+/* It will ensure the greyed out appearance of the div */
+
+#overlay {
+	display: none;
+	position: absolute;
+	width: 100px;
+	height: 100px;
+	background-color: gray;
+	top: 50px;
+	left: 50px;
+	padding: 10px;
+	opacity: .8;
+  }
+
+
+th, td{
+	width: 7.7% /* relative: 100%:13 columns= 7.6923076923 per column */
+	/*width: 50px /* fixed */
+	}
 .leftcontainer {
 	width: 55%;
 	height: 100%;

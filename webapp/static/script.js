@@ -37,7 +37,6 @@ function isChecked(x) {
 
   for (const radioButton of radioButtons) {
     if (x.checked) {
-
       console.log(x.value)
     }
     else {
@@ -53,21 +52,96 @@ $('.choice').click(function () {
   });
 });
 
-function makeDNN_Arch(){
+
+// Display table for DL
+
+function furtherInfo() {
+
+  let y = document.createElement('div');
+
+  y.classList.add('table');
+
+  // let input = document.querySelector('typeNumber').innerText();
+  let input = 4;
+
+  for (var i = 0; i < (input + 1); i++) {
+    // Creating one row per iteration
+    var tr = document.createElement('tr');
+
+    // Creating table data elements 
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+
+    // Text box input for no. of neurons
+    var t1 = document.createElement('INPUT');
+    t1.setAttribute('type', 'text');
+    // Drop down list input for activation function 
+    var t2 = document.createElement('INPUT');
+    t2.setAttribute('type', 'text');
+
+    // Possible activation functions
+    var act_func = ["RELU", "Sigmoid", "TanH"];
+
+    // Creating Drop down selection list 
+    var select = document.createElement('select');
+
+    var j;
+
+    var option = document.createElement("option");
+    option.text = act_func[j++];
+    j++;
+
+
+
+    // Create table dynamically 
+    if (i == 0) {
+      var th1 = document.createElement('th');
+      var t3 = document.createTextNode('Neurons');
+      th1.appendChild(t3);
+      tr.appendChild(th1);
+
+      var th2 = document.createElement('th');
+      var t4 = document.createTextNode('Activation Function');
+      th2.appendChild(t4);
+      tr.appendChild(th2);
+    } else {
+      td1.appendChild(t1);
+      td2.appendChild(select);
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+    }
+    // Appending all rows to the table
+    y.appendChild(tr);
+  }
+  // Appending table to the div in the DOM 
+  document.getElementById('table-area').appendChild(y);
+  a = document.getElementById('eq');
+  a.style.display = 'block';
+}
+
+// ======================================== // 
+
+
+function makeDNN_Arch() {
   // Obtaining relevant data from the DOM
   const options = document.querySelectorAll('.selected');  // All user choices
   const headers = document.querySelectorAll('th');   // All headers
 
   // Creating blank dictionary to be populated
   var Dnn_Arch = {
-    'Layers' : [],
+    'Layers': [],
     'Optimization Function': [],
     'Loss Function': [],
     'Batch Size': [],
     'Epoch': []
   }
 
-  
+  // Looping through all of the headers
+  for (let i = 0; i < headers.length; i++) {
+    if (headers.textContent == 'Layers') {
+
+    }
+  }
 
 }
 

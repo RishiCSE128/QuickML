@@ -3,8 +3,8 @@
 
 {% block rightcontent %}
 
-<div class="col-md-8">
-    <table class="table" style="background-color: #3289a8;">
+<div id="grey" class="col-md-8">
+    <table class="table" style="background-color: #007bff80;">
         <tr>
             <th></th>
             <th>Choices</th>
@@ -12,15 +12,41 @@
         <tr>
             <th>Layers</th>
             <td>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected class="selected">Select</option>
-                    <option value="3">3</option>
-                    <option value="6">6</option>
-                    <option value="9">9</option>
-                </select>
+                <div class="form-outline">
+                    <input type="number" id="typeNumber" class="form-control" />
+                    <label class="form-label" for="typeNumber">No. of Layers</label>
+                </div>
             </td>
         </tr>
-        <tr>
+    </table>
+    <button id="iq" class="btn-success" onclick="furtherInfo()">Submit</button>
+</div>
+
+
+
+<div class="col-md-4"></div>
+<div class="col-md-8">
+    <div style="margin-top: 20px; background-color:#007bff80" id="table-area"></div>
+    <button id="eq" class="btn-success" onclick="invokeDL()"
+            style="display:none">Submit</button>
+
+</div>
+
+
+
+{% endblock %}
+
+
+<!-- 
+    dnn_arch: 
+        layers : 
+
+
+
+ -->
+
+<!-- 
+  <tr>
             <th>Optimization Function</th>
             <td>
                 <select class="form-select" aria-label="Default select example">
@@ -67,17 +93,6 @@
                 </select>
             </td>
         </tr>
-    </table>
-    <button class="btn-success" onclick="makeDNN_Arch()">Submit</button>
-</div>
-
-{% endblock %}
 
 
-<!-- 
-    dnn_arch: 
-        layers : 
-
-
-
- -->
+  -->
