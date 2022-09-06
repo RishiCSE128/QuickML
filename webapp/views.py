@@ -1,5 +1,6 @@
 import os
 import json
+from xml.dom.minidom import ReadOnlySequentialNamedNodeMap
 # from tkinter import S
 from tabulate import tabulate
 from flask import Blueprint, render_template, request, redirect, url_for
@@ -114,6 +115,14 @@ def dataPre():
     dF = pd.read_csv(
         os.path.join('../QuickML/sourceCode', name))
 
+
+    with open('choice.txt') as f:
+        n = f.read()
+
+    if n[:1] == 'DL':
+        return(
+            render_template('')
+        )
     # returns formatted string which contains HTML and HTML tables using 
     # the 'tabulate' module
     return (f'''
@@ -193,8 +202,11 @@ def createModel():
         name = HC.hierarchicalClustering(X_test, X_train, Y_test, Y_train, filename)
 
     # Deep Learning 
-    if n == 'ANN':
-        name = ANN.Artficial_Neural_Network(X_test, X_train, Y_test, Y_train, filename)
+    if n[:2] == 'DL':
+        return render_template('DL_options.html')
+
+
+    print(f'================={n[:1]}]==============')
 
     return render_template('results.html', x = name)
 
