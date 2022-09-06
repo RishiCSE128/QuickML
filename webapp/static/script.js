@@ -54,8 +54,11 @@ $('.choice').click(function () {
 });
 
 function makeDNN_Arch(){
+  // Obtaining relevant data from the DOM
   const options = document.querySelectorAll('.selected');  // All user choices
+  const headers = document.querySelectorAll('th');   // All headers
 
+  // Creating blank dictionary to be populated
   var Dnn_Arch = {
     'Layers' : [],
     'Optimization Function': [],
@@ -65,6 +68,7 @@ function makeDNN_Arch(){
   }
 
   
+
 }
 
 
@@ -83,13 +87,16 @@ function makeVarMap() {
 
   var head = [];
   for (let i = 0; i < headers.length; ++i) {
+    // index i tracks row by row 
     head[i] = headers[i].textContent;
   }
+  // Seperate index to track column - name of attribute 
   var j = 0;
   for (let x = 0; x < radioButtons.length; x++) {
     if (radioButtons[x].checked && radioButtons[x].value == 'Ind') {
       varMap['Independent'].push(head[j]);
       j++;
+      // Adds into respective category and increments the COLUMN index 
     }
     if (radioButtons[x].checked && radioButtons[x].value == 'Dep') {
       varMap['Dependent'].push(head[j]);
@@ -115,7 +122,7 @@ function makeVarMap() {
     data: JSON.stringify(s)
   }).done(function (result) {     // When function returns append data to div in DOM
     var div = document.createElement("div");
-    
+    // Creating DIV and appending to existing div in DOM 
     div.style.width = "100%";
     div.style.background = "#007bff80";
     div.innerHTML = result;
@@ -123,6 +130,7 @@ function makeVarMap() {
 
     document.getElementById("main").appendChild(div);
     document.getElementById('Xar').style.display = "block";
+    // Make other data visible 
   })
 }
 
